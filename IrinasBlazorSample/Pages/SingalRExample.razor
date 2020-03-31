@@ -1,0 +1,63 @@
+﻿@page "/notify"
+@using Microsoft.Extensions.Configuration;
+@using Microsoft.AspNetCore.SignalR.Client;
+@using IrinasBlazorSample.Data;
+@using IrinasBlazorSample.Data.Models;
+@using Microsoft.Extensions.Logging;
+
+@inject IDataService dataService;
+@inject IJSRuntime js;
+@inject IConfiguration config;
+@inject ILoggerFactory loggerFactory;
+@inject NotificationService notificationService;
+<h3>SingalR Example</h3>
+
+<RadzenButton Text="Attempt To Save Some Data" Click="SaveData"></RadzenButton>
+
+@code {
+    ILogger _logger;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _logger = loggerFactory.CreateLogger("SignalR Blazor Page");
+        var baseUrl = config["BaseUrl"];
+        var connection = new Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder()
+            .WithUrl(baseUrl + "notify")
+            .Build();
+
+        connection.On<Models.NotificationMessage>("RecieveNotification",
+            OnRecieveNotification);
+        try
+        {
+            await connection.StartAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "{message}", ex.Message);
+        }
+    }
+
+    async Task SaveData()
+    {
+        dataService.SaveAsync(new User());
+        notificationService.Notify(new Radzen.NotificationMessage
+        {
+            Severity = NotificationSeverity.Info,
+            Detail = "Saving a new User to the Database",
+            Summary = "Saving",
+            Duration = 4000
+        });
+    }
+
+    async Task OnRecieveNotification(Models.NotificationMessage message)
+    {
+        notificationService.Notify(new Radzen.NotificationMessage
+        {
+            Severity = NotificationSeverity.Error,
+            Detail = message.Message,
+            Summary = message.Sender,
+            Duration = 4000
+        });
+        await InvokeAsync(() => { StateHasChanged(); });
+    }
+}

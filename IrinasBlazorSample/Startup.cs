@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Radzen;
 using Radzen.Blazor;
+using IrinasBlazorSample.Hubs;
 
 namespace IrinasBlazorSample
 {
@@ -31,6 +32,9 @@ namespace IrinasBlazorSample
             services.AddScoped<DialogService>();
             services.AddScoped<NotificationService>();
             services.AddHttpClient<IPictureService, PictureService>();
+            services.AddScoped<IDataService, FakeDataService>();
+            
+            services.AddSignalR();
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
@@ -60,6 +64,7 @@ namespace IrinasBlazorSample
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
+                endpoints.MapHub<NotificationHub>("/notify");
             });
         }
 

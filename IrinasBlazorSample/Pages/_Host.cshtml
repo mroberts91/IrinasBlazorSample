@@ -34,5 +34,26 @@
 
     <script src="_framework/blazor.server.js"></script>
     <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
+    <script>
+        // Signal R Req code
+        window.GetInputValue = (Id) => {
+            var elem = document.getElementById(Id);
+            return elem.value;
+        };
+
+        // Focus input interop code
+        window.SetFocus = (Id) => {
+            setTimeout(internalFocus, 10, Id);
+        };
+        function internalFocus(Id) {
+            var element = document.getElementById(Id);
+            if (element == null) {
+                setTimeout(internalFocus, 10, Id);
+                return;
+            }
+            element.focus();
+            element.select();
+        }
+    </script>
 </body>
 </html>
