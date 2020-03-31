@@ -1,5 +1,5 @@
 ﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">IrinasBlazorSample</a>
+    <a class="navbar-brand" href="">Irina's Blazor Sample</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,11 +18,39 @@
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+            <NavLink class="nav-link" href="simple">
+                <span class="oi oi-script" aria-hidden="true"></span> Self Contained Component
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="logic">
+                <span class="oi oi-fork" aria-hidden="true"></span> Logic Seperate Component
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="ref">
+                <span class="oi oi-bullhorn" aria-hidden="true"></span> Reference Child Component
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="events">
+                <span class="oi oi-bolt" aria-hidden="true"></span> Component Events
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="#">
+                <span class="oi oi-browser" aria-hidden="true"></span> Free Radzen Components
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="#">
+                <span class="oi oi-comment-square" aria-hidden="true"></span> Signal R Messages
             </NavLink>
         </li>
     </ul>
+    <div class="nav flex-column flag">
+        <img src="https://media1.tenor.com/images/292adb416146104dcce7936e466fb780/tenor.gif?itemid=13978948" />
+    </div>
 </div>
 
 @code {

@@ -1,0 +1,25 @@
+﻿@using IrinasBlazorSample.Data.Models;
+
+<select @onchange="SelectedUserChanged">
+    <option value="">Select a User...</option>
+    @foreach (var user in AvailableUsers)
+    {
+        <option value="@user.Id">@user.FirstName @user.LastName</option>
+    }
+</select>
+
+@code{
+    [Parameter] public List<User> AvailableUsers { get; set; }
+    [Parameter] public EventCallback<User> UserChangedEvent { get; set; }
+
+    async Task SelectedUserChanged(ChangeEventArgs args)
+    {
+        var userId = args.Value.ToString();
+        var selectedUser = AvailableUsers?.Where(u => u.Id == userId)?.FirstOrDefault();
+        if (selectedUser != null)
+        {
+            UserChangedEvent.InvokeAsync(selectedUser);
+        }
+    }
+
+}

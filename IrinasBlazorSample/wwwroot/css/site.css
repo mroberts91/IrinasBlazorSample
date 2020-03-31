@@ -4,6 +4,16 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+.container .row{
+    padding: 5px 15px !important;
+}
+
+.sec {
+    background-color: #f1eeee;
+    margin: 5px;
+    border-radius: 10px;
+}
+
 a, .btn-link {
     color: #0366d6;
 }
@@ -31,7 +41,7 @@ app {
 }
 
     .main .top-row {
-        background-color: #f7f7f7;
+        background-color:white;
         border-bottom: 1px solid #d6d5d5;
         justify-content: flex-end;
     }
@@ -47,8 +57,14 @@ app {
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-image: linear-gradient(180deg, rgb(205, 0, 0) 40%, #FFD900 115%);
 }
+
+    .sidebar .flag img {
+        width: 50%;
+        border-radius: 52px;
+        margin: 50px auto;
+    }
 
     .sidebar .top-row {
         background-color: rgba(0,0,0,0.4);
@@ -156,7 +172,7 @@ app {
     }
 
     .sidebar {
-        width: 250px;
+        width: 290px;
         height: 100vh;
         position: sticky;
         top: 0;

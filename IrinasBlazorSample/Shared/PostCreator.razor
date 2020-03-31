@@ -1,0 +1,52 @@
+﻿@using IrinasBlazorSample.Data.Models;
+@using System.ComponentModel.DataAnnotations;
+@using Bogus;
+<h3>Create Post for @User.FirstName @User.LastName</h3>
+
+<EditForm class="form-group" Model="PostModel" OnValidSubmit="OnValidFormSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <label>Post Body: </label>
+    <InputTextArea class="form-control" @bind-Value="@PostModel.Content"></InputTextArea>
+    <br />
+    <button type="submit" class="btn btn-primary">Save Post</button>
+    <button type="button" class="btn btn-warning" @onclick="@ResetForm">Clear</button>
+</EditForm>
+
+
+@code {
+    [Parameter] public User User { get; set; }
+    [Parameter] public EventCallback<Post> PostAddedEvent { get; set; }
+    PostContent PostModel = new PostContent();
+
+    
+
+    async Task OnValidFormSubmit(EditContext editContext)
+    {
+        var bougus = new Faker().Random.String2(6);
+        var model = (PostContent)editContext.Model;
+        var post = new Post()
+        {
+            Id = bougus,
+            Content = model.Content,
+            Timestamp = DateTime.Now,
+            UserId = User.Id
+        };
+
+        PostAddedEvent.InvokeAsync(post);
+        ResetForm();
+    }
+
+    void ResetForm()
+    {
+        PostModel = new PostContent();
+    }
+
+
+    class PostContent
+    {
+        [Required]
+        [StringLength(400, MinimumLength = 1)]
+        public string Content { get; set; }
+    }
+}

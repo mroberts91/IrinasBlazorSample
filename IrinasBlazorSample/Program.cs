@@ -19,7 +19,6 @@ namespace IrinasBlazorSample
                 var host = CreateHostBuilder(args).Build();
 
                 Log.Information("Starting Irina's Blazor App Host...");
-                throw new Exception("We blew up!");
                 host.Run();
             }
             catch (Exception ex)

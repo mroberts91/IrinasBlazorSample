@@ -1,0 +1,82 @@
+﻿@page "/ref";
+@using IrinasBlazorSample.Shared;
+@using IrinasBlazorSample.Models;
+
+<h3>Reference Child Component</h3>
+<p>Example of how to create a concrete instance of a sub component in a parent component and pass that reference to that sub component. Allowing you to modify state from the parent.</p>
+<p>This works well, but it come with the caveat that you need to manually make a call to notify the component that it's state has changed.</p>
+
+<div class="row">
+    <div class="col-3">
+        <DisplayMessage @ref="DisplayMessage" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-6">
+        <div class="row">
+            <div class="col">
+                <button @onclick="OnButtonSuccessClick" class="btn btn-success"  id="1">Success Message</button>
+            </div>
+            <div class="col">
+                <button @onclick="OnButtonFailClick" class="btn btn-danger" id="2">Fail Message</button>
+            </div>
+            <div class="col">
+                <button @onclick="OnButtonWarnClick" class="btn btn-warning" id="3">Warning Message</button>
+            </div>
+            <div class="col">
+                <button @onclick="OnButtonStanClick" class="btn btn-primary" id="4">Standard Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    DisplayMessage DisplayMessage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        DisplayMessage = new DisplayMessage();
+    }
+
+    void OnButtonSuccessClick()
+    {
+        DisplayMessage.Model = new SimpleDisplayModel
+        {
+            DisplayMessage = "Success!",
+            MessageType = MessageType.Success
+        };
+        DisplayMessage.UpdateState();
+    }
+
+    void OnButtonFailClick()
+    {
+        DisplayMessage.Model = new SimpleDisplayModel
+        {
+            DisplayMessage = "Failure!",
+            MessageType = MessageType.Failure
+        };
+        DisplayMessage.UpdateState();
+    }
+
+    void OnButtonWarnClick()
+    {
+        DisplayMessage.Model = new SimpleDisplayModel
+        {
+            DisplayMessage = "Warning!",
+            MessageType = MessageType.Warning
+        };
+        DisplayMessage.UpdateState();
+    }
+
+    void OnButtonStanClick()
+    {
+        DisplayMessage.Model = new SimpleDisplayModel
+        {
+            DisplayMessage = "You have a new message.",
+            MessageType = MessageType.Default
+        };
+        DisplayMessage.UpdateState();
+    }
+}

@@ -1,0 +1,50 @@
+﻿@page "/events";
+
+    <div class="container">
+        <h3>Component Events</h3>
+        <div class="row">
+            <div class="col-4 sec">
+                <UserSelect AvailableUsers="AvailableUsers" UserChangedEvent="OnSelectedUserChange"/>
+            </div>
+        </div>
+        @if (SelectedUser != null)
+        {
+            <div class="row">
+                <div class="col sec">
+                    <PostViewer User="SelectedUser" />
+                </div>
+                <div class="col sec">
+                    <PostCreator User="SelectedUser" PostAddedEvent="OnSelectedUserPostAdd"/>
+                </div>
+            </div>
+        }
+        else
+        {
+            <p>Please select a user to view/add posts.</p>
+        }
+
+    <br />
+    <br />
+    <hr />
+        <div class="row">
+            <div class="col">
+                <h4>Components and Events</h4>
+                <p>Each of the shaded in sections on the page is a separately composed component.</p>
+                <p>
+                    Each of these components all share the same parent component which is the base component for the page. These child components receive or share data
+                    via events that are triggered from inside a child component, all of which is coordinated by the parent component and passed to it childern as needed.
+                </p>
+                <p>
+                    The <code>[Parameter]</code> keyword on component properties is the key to all of this.
+                    <ul>
+                        <li><code>[Parameter] EventCallback&lt;T&gt;</code>: Is a parameter that allows another component to subscribe to the event and recieve some data when it is invoked.</li>
+                        <li><code>[Parameter] T</code>: Is a paramter that is used to recieved data from the parent component. It is generally bound to a property on the parent component.</li>
+                    </ul>
+                </p>
+                <p>
+                    Instead of creating a strong reference to a child component with the <code>ref</code> keyword. Instead there is a looser coupling of components since you are just
+                    subscribing to an event and waiting for it to fire. This allows more flexibility when passing state around and managing all the components on the page.
+                </p>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,121 @@
+﻿@page "/simple"
+@using Microsoft.AspNetCore.Components.Forms;
+@using Microsoft.AspNetCore.Components;
+@using System.ComponentModel.DataAnnotations;
+<h3>Self Contained Component</h3>
+<p>A simple component that is fully self contained. All the <code>C#</code> logic and <code>HTML</code> markup is contained in one file.</p>
+
+<br />
+<h4>@displayMessage</h4>
+<br />
+<hr />
+<div class="row">
+    <div class="col-3">
+        <button @onclick="ButtonClick" class="btn btn-primary" disabled="@buttonDisabled">Click ME!</button>
+        <br />
+        <label for="disableButtonClick">Disable Button Click</label>
+        <input type="checkbox" id="diableButtonClick" @onchange="ToggleButton" />
+    </div>
+    <div class="col-3">
+       <p>Input Value:  @inputText</p>
+       <input type="text" @onchange="InputTextChange" />
+    </div>
+</div>
+<br />
+<hr />
+<h5>Sample Form</h5>
+<div class="row">
+    <div class="col-3">
+        <EditForm class="form-group" Model="Model" OnValidSubmit="FormSubmit" OnInvalidSubmit="InvalidFormSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <label>Title</label>
+            <InputSelect @bind-Value="@Model.Title" class="form-control" style="width:40%">
+                <option value="">Select Title...</option>
+                @foreach (var title in Titles)
+                {
+                    <option value="@title">@title</option>
+                }
+            </InputSelect>
+            <label>Firstname</label>
+            <InputText @bind-Value="@Model.Firstname" class="form-control" />
+            <label>Lastname</label>
+            <InputText @bind-Value="@Model.Lastname" class="form-control" />
+            <label>Email</label>
+            <InputText @bind-Value="@Model.Email" class="form-control" />
+            <label>Bio</label>
+            <InputTextArea @bind-Value="@Model.Bio" class="form-control"></InputTextArea>
+            <br />
+            <button class="btn btn-success" type="submit">Submit</button>
+        </EditForm>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-5">
+        <h6>Valid Form Output</h6>
+        <code>
+            class FormControl
+            <br />
+            {<br />
+            &emsp;&emsp;Title: @SubmittedModel.Title<br />
+            &emsp;&emsp;Firstname:  @SubmittedModel.Firstname<br />
+            &emsp;&emsp;Lastname: @SubmittedModel.Lastname<br />
+            &emsp;&emsp;Email:  @SubmittedModel.Email<br />
+            &emsp;&emsp;Bio: @SubmittedModel.Bio<br />
+            }<br />
+        </code>
+    </div>
+</div>
+
+@code {
+    string displayMessage = "Interact with the page to change the Message";
+    bool buttonDisabled = false;
+    string inputText = "";
+    FormModel Model = new FormModel();
+    FormModel SubmittedModel = new FormModel();
+    List<string> Titles = new List<string> { "Mr.", "Ms.", "Mrs.", "товарищ" };
+
+    void ButtonClick()
+    {
+        displayMessage = "You clicked the button.";
+    }
+
+    void ToggleButton()
+    {
+        buttonDisabled = !buttonDisabled;
+        displayMessage = $"Button has been {(buttonDisabled ? "Disabled" : "Enabled")}";
+    }
+
+    void InputTextChange(object evt)
+    {
+        var change = evt as ChangeEventArgs;
+        if (change != null && change.Value != null)
+        {
+            displayMessage = "Text Input Value Changed";
+            inputText = change.Value.ToString();
+        }
+    }
+
+    void InvalidFormSubmit()
+    {
+        displayMessage = "The form you submitted is invalid.";
+    }
+
+    void FormSubmit(EditContext context)
+    {
+        SubmittedModel = (FormModel)context.Model;
+        displayMessage = "You Submited a valid form.";
+    }
+
+    class FormModel
+    {
+        [Required]
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string Title { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        public string Bio { get; set; }
+    }
+
+}

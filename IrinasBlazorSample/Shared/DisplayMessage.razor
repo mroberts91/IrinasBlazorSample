@@ -1,0 +1,29 @@
+﻿@using IrinasBlazorSample.Models;
+
+
+<h3>Display Message</h3>
+<div class="row" style="margin-left: 2px;">
+    <div class="col" style="border: 1px solid grey; color:@textColor">
+        <p>Message: @Model.DisplayMessage</p>
+        <p>Random Int: @Model.RandomInt</p>
+    </div>
+</div>
+
+@code {
+
+    public SimpleDisplayModel Model { get; set; } = new SimpleDisplayModel();
+
+    string textColor => Model.MessageType switch
+    {
+        MessageType.Success => "green",
+        MessageType.Failure => "tomato",
+        MessageType.Warning => "darkorange",
+        _ => "black"
+    };
+
+    public void UpdateState()
+    {
+        StateHasChanged();
+    }
+
+}

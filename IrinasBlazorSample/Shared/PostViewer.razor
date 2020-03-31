@@ -1,0 +1,19 @@
+﻿@using IrinasBlazorSample.Data.Models;
+
+<h3>Posts by @User.FirstName @User.LastName</h3>
+
+@foreach (var post in User.Posts)
+{
+    <table>
+        <tr>
+            <th colspan="2">@post.Timestamp</th>
+        </tr>
+        <tr>
+            <td colspan="2">- @post.Content</td>
+        </tr>
+    </table>
+}
+
+@code {
+    [Parameter] public User User { get; set; }
+}
