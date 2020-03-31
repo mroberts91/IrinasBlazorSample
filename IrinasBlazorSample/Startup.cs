@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Radzen;
+using Radzen.Blazor;
 
 namespace IrinasBlazorSample
 {
@@ -25,6 +27,11 @@ namespace IrinasBlazorSample
             {
                 options.UseInMemoryDatabase(databaseName: "IrinasDatabase");
             });
+
+            services.AddScoped<DialogService>();
+            services.AddScoped<NotificationService>();
+            services.AddHttpClient<IPictureService, PictureService>();
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
         }

@@ -1,0 +1,22 @@
+﻿@using IrinasBlazorSample.Data.Models;
+@using IrinasBlazorSample.Data;
+@using IrinasBlazorSample.Models;
+@inject IPictureService pictureService;
+
+<h6>User ID: @User.Id</h6>
+<p><strong>Post Count: @User.Posts.Count</strong></p>
+@if (Picture != null)
+{
+    <iframe src="@Picture.Url" style="height: 250px; border:none; margin: 5px auto"/>
+}
+
+@code {
+    [Parameter] public User User { get; set; }
+
+    GIF Picture { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Picture = await pictureService.GetRandomGif();
+    }
+}
