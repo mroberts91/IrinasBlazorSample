@@ -39,7 +39,7 @@ namespace IrinasBlazorSample.Data
 
         public async Task<GIF> GetRandomGif()
         {
-            var uri = $"{_url}?q={_type}&api_key={_key}&limit=11";
+            var uri = $"{_url}?q={_type}&api_key={_key}&limit=50";
             var json = await _httpClient.GetStringAsync(uri);
             var picutres = JsonSerializer.Deserialize<GiphyReturn>(json);
             return picutres.Picutres.ElementAtOrDefault(_random.Next(0, (picutres.Picutres.Count - 1)));

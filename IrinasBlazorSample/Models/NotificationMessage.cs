@@ -7,7 +7,7 @@ namespace IrinasBlazorSample.Models
 {
     public class NotificationMessage
     {
-        public NotificationMessage(string message, string sender) : this(message, sender, Severity.Low) { }
+        public NotificationMessage(string message, string sender) : this(message, sender, Severity.Info) { }
         public NotificationMessage(string message, string sender, Severity severity)
         {
             Message = message;
@@ -23,9 +23,8 @@ namespace IrinasBlazorSample.Models
 
     public enum Severity
     {
-        Low,
-        Medium,
-        High,
-        Critical,
+        Info,
+        Success,
+        Error,
     }
 }

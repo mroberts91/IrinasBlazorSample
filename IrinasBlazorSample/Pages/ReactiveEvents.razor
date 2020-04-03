@@ -1,0 +1,38 @@
+﻿@page "/notify"
+
+<h3>.Net Reactive Events Example</h3>
+
+<RadzenButton Text="Attempt To Save Some Data" Click="SaveData"></RadzenButton>
+
+<br />
+<hr />
+<br />
+<p>
+    Using the <code>System.Reactive</code> NuGet packages you gain the ability to create "<code>Observers</code>" that can receive messages concurrently
+    and act upon the results of the event.
+</p>
+<p>
+    In this simple example, On page load, we inject and <code>IDataService</code> and subscribe to it's events. On each event received, a notification
+    popup is displayed on the screen.
+</p>
+<p>
+    <code class="codeblock">
+        DataService.Subscribe(message =><br />
+        {<br />
+        &emsp;&emsp;_logger.LogInformation("Message recieved from {sender} - {message}", message.Sender, message.Message);<br />
+        &emsp;&emsp;ShowNotificationMessage(message);<br />
+        });
+    </code>
+</p>
+<p>
+    When the button is clicked, we make a call to the <code>IDataService.SaveAsync&lt;T&gt;()</code> method for it to save out a new <code>User</code> and
+    subsequently receive notifications from the service through the <code>Subscribe</code> event handler defined above.
+</p>
+<p>
+    <code class="codeblock">
+        private async Task SaveData()<br />
+        {<br />
+        &emsp;&emsp;DataService.SaveAsync(new User());<br />
+        }
+    </code>
+</p>
