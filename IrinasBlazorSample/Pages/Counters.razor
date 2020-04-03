@@ -1,0 +1,26 @@
+﻿@page "/counter/{Count:int}"
+@page "/counter"
+<div class="container">
+<h3>Counters</h3>
+<p>Try changing the url parameter to a differnet number and see what happens.</p>
+<p>* If there is no number in the url enter <code>/counter/5</code> </p>
+<br />
+    <div class="row">
+        @foreach (var _ in Enumerable.Range(0, Count ?? 1))
+        {
+            <div class="col">
+                <Counter />
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private int? _count;
+    [Parameter] public int? Count
+    {
+        get => _count > 100 ? 100 : _count;
+        set => _count = value;
+    }
+
+}
