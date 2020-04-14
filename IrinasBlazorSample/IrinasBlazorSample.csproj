@@ -27,8 +27,4 @@
     <PackageReference Include="System.Reactive.Observable.Aliases" Version="4.3.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>

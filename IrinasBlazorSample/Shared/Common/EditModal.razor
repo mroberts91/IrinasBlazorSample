@@ -1,0 +1,77 @@
+﻿@typeparam TModel
+@inject IJSRuntime js
+
+<div class="modal fade" tabindex="-1" role="dialog" id="@CssId">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @Header
+                <button type="button" class="close" data-dismiss="modal" @onclick="ToggleModal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @if (Model != null)
+                {
+                    <EditForm Model="@Model" OnValidSubmit="@OnValidFormSubmit">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+                        @ChildContent
+                    </EditForm>
+                }
+            </div>
+            <div class="modal-footer">
+                @Footer
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool _show = false;
+
+    [Parameter]
+    public TModel Model { get; set; }
+    [Parameter]
+    public string CssId { get; set; } = $"Modal{Guid.NewGuid()}";
+    [Parameter]
+    public string SubmitButtonText { get; set; } = "Submit";
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public RenderFragment Header { get; set; }
+    [Parameter]
+    public RenderFragment Footer { get; set; }
+
+    [Parameter]
+    public EventCallback<string> ModalOpened { get; set; }
+    [Parameter]
+    public EventCallback<string> ModalClosed { get; set; }
+    [Parameter]
+    public EventCallback<EditContext> ValidFormSubmit { get; set; }
+
+    public async Task ToggleModal()
+    {
+        _show = !_show;
+
+        if (_show)
+        {
+            await js.InvokeVoidAsync("showModal", CssId);
+            await ModalOpened.InvokeAsync(CssId);
+        }
+        else
+        {
+            await js.InvokeVoidAsync("hideModal", CssId);
+            await ModalClosed.InvokeAsync(CssId);
+        }
+
+        await InvokeAsync(() => StateHasChanged());
+    }
+
+    private void OnValidFormSubmit(EditContext context)
+    {
+        ValidFormSubmit.InvokeAsync(context);
+    }
+}
+

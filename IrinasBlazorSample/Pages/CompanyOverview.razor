@@ -1,0 +1,18 @@
+﻿@page "/ComplexObject"
+@using IrinasBlazorSample.Shared.Company.Employees;
+@using IrinasBlazorSample.Shared.Company.Clients;
+<div class="container">
+    @if (Company is null)
+    {
+        <p><em>Loading ...</em></p>
+    }
+    else
+    {
+        <h3>@Company.CompanyName</h3>
+        <br />
+        <CompanyEmployees EmployeeList="@Company.Employees" />
+        <br />
+        <br />
+        <CompanyClients ClientList="@Company.Clients" />
+    }
+</div>

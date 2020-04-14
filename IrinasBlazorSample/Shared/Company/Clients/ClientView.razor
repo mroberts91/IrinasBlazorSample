@@ -1,0 +1,45 @@
+﻿@if(Model != null)
+{
+    <div class="row">
+        <div class="col">
+            <h5>Client # @Model.ClientId</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p><strong>Data Items</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item Type</th>
+                        <th>Item Value</th>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.PersonalData?.DataItems)
+                    {
+                        <tr>
+                            <td>@item.Key</td>
+                            <td>@item.Value</td>
+                            <td></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" @onclick="OnAddItemButtonClick" class="btn btn-primary">Add New Item</button>
+        </div>
+    </div>
+    @if (IsAddingItem)
+    {
+        <div class="row">
+            <div class="col">
+                <ClientAddData ValidFormSubmit="OnDataItemAdded" FormInputCancelled="AddItemFormCleared" />
+            </div>
+        </div>
+    }
+}

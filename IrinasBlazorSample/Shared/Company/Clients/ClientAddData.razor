@@ -1,0 +1,30 @@
+﻿@using IrinasBlazorSample.Models;
+<EditForm Model="@Model" OnValidSubmit="OnValidFormSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="row">
+        <div class="col">
+            <label for="key">Item Type</label>
+            <select @bind="Model.Key" id="key" class="form-control">
+                <option value="-1">Select Type ...</option>
+                <option value="@DataItemType.PhoneNumber">Phone Number</option>
+                <option value="@DataItemType.Email">Email Address</option>
+                <option value="@DataItemType.Gender">Gender</option>
+                <option value="@DataItemType.SocialSecurityNumber">SSN</option>
+                <option value="@DataItemType.CitizenshipStatus">Citizenship Status</option>
+            </select>
+        </div>
+        <div class="col">
+            <label for="value">Value</label>
+            <InputText @bind-Value="@Model.Value" type="text" id="value" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div style="float: right;">
+                <button class="btn btn-success" type="submit">Save</button>
+                <button class="btn btn-outline-warning" type="button" @onclick="@ClearForm">Cancel</button>
+            </div>
+        </div>
+    </div>
+</EditForm>

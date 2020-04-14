@@ -1,0 +1,36 @@
+﻿@using IrinasBlazorSample.Shared.Common;
+
+@if (EmployeeList.Count < 1)
+{
+    <p>No Employees at compnay.</p>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            <h5>Employees</h5>
+        </div>
+        <div class="card-body">
+            @foreach (var employee in EmployeeList)
+            {
+                <div class="row">
+                    <div class="col">
+                        <p>@employee.Username</p>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-info" @onclick="@(() => OnViewEmployeeClickAsync(employee.Username))">Info</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+<SimpleModal @ref="@EmployeeModal" ModalOpened="OnEmployeeModalOpenAsync" ModalClosed="OnEmployeeModalClosedAsync" CssId="EmployeeViewModal">
+    <Header>
+        <h3>@SelectedEmployee?.Username</h3>
+    </Header>
+    <ChildContent>
+       <EmployeeView Model="@SelectedEmployee" />
+    </ChildContent>
+</SimpleModal>

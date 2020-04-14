@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Radzen;
 using Radzen.Blazor;
+using IrinasBlazorSample.Services;
 
 namespace IrinasBlazorSample
 {
@@ -32,6 +33,7 @@ namespace IrinasBlazorSample
             services.AddScoped<NotificationService>();
             services.AddHttpClient<IPictureService, PictureService>();
             services.AddTransient<IDataService, FakeDataService>();
+            services.AddTransient<ICompanyService, CompanyService>();
             
             services.AddSignalR();
 

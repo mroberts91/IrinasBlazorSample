@@ -1,0 +1,37 @@
+﻿@using IrinasBlazorSample.Shared.Common;
+
+@if (ClientList.Count < 1)
+{
+    <p>No Employees at compnay.</p>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            <h5>Employees</h5>
+        </div>
+        <div class="card-body">
+            @foreach (var client in ClientList)
+            {
+                <div class="row">
+                    <div class="col">
+                        <p>Client # @client.ClientId</p>
+                    </div>
+                    <div class="col">
+                        <p># of Data Items: @client.PersonalData.DataItems.Count</p>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary" @onclick="@(() => OnViewClientClickAsync(client.ClientId))">View Data</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+
+<SimpleModal @ref="ClientModal" ModalOpened="OnClientModalOpenAsync" ModalClosed="OnClientModalClosedAsync" CssId="ClientViewModal">
+    <ChildContent>
+        <ClientView Model="@SelectedClient" ClientUpdated="SelectedClientUpdated" />
+    </ChildContent>
+</SimpleModal>

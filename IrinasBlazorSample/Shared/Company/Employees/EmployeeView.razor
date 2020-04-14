@@ -1,0 +1,19 @@
+﻿@if (Model is null)
+{
+    <p><em>Loading ...</em></p>
+}
+else
+{
+    @foreach (var department in Model?.Departments)
+    {
+        <div class="row">
+            <div class="col">
+                <p>@department.DepartmentId</p>
+            </div>
+            <div class="col">
+                <p>@department.DepartmentName</p>
+            </div>
+        </div>
+    }
+}
+
