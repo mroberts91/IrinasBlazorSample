@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Components.Forms;
 @using Microsoft.AspNetCore.Components;
 @using System.ComponentModel.DataAnnotations;
+@using IrinasBlazorSample.Models;
 <h3>Self Contained Component</h3>
 <p>A simple component that is fully self contained. All the <code>C#</code> logic and <code>HTML</code> markup is contained in one file.</p>
 
@@ -17,8 +18,8 @@
         <input type="checkbox" id="diableButtonClick" @onchange="ToggleButton" />
     </div>
     <div class="col-3">
-       <p>Input Value:  @inputText</p>
-       <input type="text" @onchange="InputTextChange" />
+        <p>Input Value:  @inputText</p>
+        <input type="text" @onchange="InputTextChange" />
     </div>
 </div>
 <br />
@@ -66,7 +67,15 @@
     </div>
 </div>
 
+
+
 @code {
+    //public CustomerMetaData Model2 { get; set; } = new CustomerMetaData();
+
+    //private void Submit(EditContext ctx)
+    //{
+    //    Console.WriteLine();
+    //}
     string displayMessage = "Interact with the page to change the Message";
     bool buttonDisabled = false;
     string inputText = "";

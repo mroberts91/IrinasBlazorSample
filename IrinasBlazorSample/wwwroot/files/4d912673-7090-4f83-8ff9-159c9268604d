@@ -1,0 +1,822 @@
+# Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+#      102.54.94.97		rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
+
+#**************************************************************************************************************************************************
+#*** Environment Reset Machines
+#**************************************************************************************************************************************************
+
+192.168.65.201 	EnvironmentResetDb							#Redirects to a SQL Server used to store backup copies of Prod databases
+#192.168.65.201 SFENVRST01									#This never has to be turned on.  I've placed it here to know it's the name of the actual server
+#192.168.65.202 SFENVRSTSPS01								#This never has to be turned on.  I've placed it here to know it's the name of the actual server
+#192.168.65.99  SFTFSBUILD004								#This never has to be turned on.  I've placed it here to know it's the name and IP address of the actual server
+
+
+#**************************************************************************************************************************************************
+#*** APPDEV
+#**************************************************************************************************************************************************
+
+10.51.20.62 DEVFINSQL01										#APPDEV Lawson SQL Server
+10.51.20.62 DEVFINSQL01.appdevinvtitle.com					#APPDEV Lawson SQL Server
+
+#**************************************************************************************************************************************************
+#*** Local Environment
+#**************************************************************************************************************************************************
+
+#192.168.65.100	portal.invtitle.com 	    				#Redirects to Local
+#192.168.65.100 	envstateservice.invtitle.com				#Redirects to Local
+#192.168.65.100  systemhealth.invtitle.com                   #Redirects to Local
+
+#192.168.65.100 NotificationSvcs		    				#Redirects to Local
+#192.168.65.100 	SecuritySvcs			    				#Redirects to Local
+#192.168.65.100 AuthenticationSvcs		    				#Redirects to Local
+#192.168.65.100 ExternalSvcsForRamQuest    					#Redirects to Local
+#192.168.65.100 ExternalSvcsForSoftPro    					#Redirects to Local
+#192.168.65.100 ExternalSvcsForSoftProSelect				#Redirects to Local
+#192.168.65.100 ExternalSvcsForLandtech    					#Redirects to Local
+#192.168.65.100 WorkflowSvcs    							#Redirects to Local
+#192.168.65.100 FolioSvcs									#Redirects to Local
+#192.168.65.100 FolioChangeProcessorSvcs					#Redirects to Local
+#192.168.65.100 SearchSvcs									#Redirects to Local
+#192.168.66.93 ElasticSearch01								#Redirects to Local
+#192.168.66.93 ElasticSearch02								#Redirects to Local
+#192.168.65.100 TitleSvcs									#Redirects to Local
+#192.168.65.100 DocumentMgmtSvcs							#Redirects to Local
+#192.168.65.100 ExceptionHistorySvcs						#Redirects to Local
+#192.168.65.100 ExcludedPartiesSvcs							#Redirects to Local
+#192.168.65.100	IssuingOfficeSvcs							#Redirects to Local
+#192.168.65.100 AccountSvcs									#Redirects to Local
+#192.168.65.100 ContactSvcs									#Redirects to Local
+#192.168.65.100 ProviderSvcs								#Redirects to Local
+#192.168.65.100 EfliteSvcs									#Redirects to Local
+#192.168.65.100 ProductItemSvcs								#Redirects to Local
+#192.168.65.100 SystemHealthSvcs                            #Redirects to Local
+
+#192.168.65.100 SystemInstrumentationDB	    				#Redirects to Local SQL Server
+#192.168.65.100 NotificationDB			    				#Redirects to Local SQL Server
+#192.168.65.100 UserSecurityDB			    				#Redirects to Local SQL Server
+#192.168.65.100 ClientPortalDB								#Sets the path for Site Finity to Local SQL Server
+#192.168.65.100 ExternalDB									#Redirects to Local SQL Server
+192.168.65.100 FolioDB										#Redirects to Local SQL Server
+#192.168.65.200 ProductItemDb								#Redirects to Local SQL Server
+#192.168.65.100 ArtifactDB									#Redirects to Local SQL Server
+#192.168.65.100 TitleDB										#Redirects to Local SQL Server
+#192.168.65.100 DocumentManagementDB						#Redirects to Local SQL Server
+#192.168.65.100 ProviderDB									#Redirects to Local SQL Server
+#192.168.65.100 AppSQLServer								#Redirects to Local SQL Server
+#192.168.65.100 SalesForceDb								#Redirects to Local SQL Server
+192.168.65.100 ReportsDB                   				#Redirects to Local SQL Server
+
+#**************************************************************************************************************************************************
+#*** Development Environment (DEV01)
+#**************************************************************************************************************************************************
+
+#192.168.66.100	portal.invtitle.com 	    				#Redirects to DEV01 Client Portal Server load balancer (Example: https://portal.invtitle.com)
+#192.168.66.104 crmexternalservice.invtitle.com			    #Redirects to DEV01 external service server load balancer (Example Call: GET https://crmexternalservice.invtitle.com/v1/pings/shallow)
+#192.168.66.106 externalsvcsforramquest.invtitle.com		#Redirects to DEV01 external service server load balancer (Example Call: POST https://externalsvcsforramquest.invtitle.com/v1/pings/shallow)
+#192.168.66.105	externalsvcsforsoftpro.invtitle.com			#Redirects to DEV01 external service server load balancer (Example Call: POST https://externalsvcsforsoftpro.invtitle.com/v1/pings/shallow)
+#192.168.66.115 externalsvcsforsoftproselect.invtitle.com	#Redirects to DEV01 external service server load balancer (Example Call: POST https://externalsvcsforsoftproselect.invtitle.com/v1/pings/shallow)
+#192.168.66.110 externalsvcsforlandtech.invtitle.com	    #Redirects to DEV01 external service server load balancer (Example Call: POST https://externalsvcsforlandtech.invtitle.com/v1/pings/shallow)
+#192.168.66.170	sharepoint									#Redirects to DEV01 SharePoint load balancer (http://sharepoint.int.invtitle.com (for Team site) and http://sharepoint.int.invtitle.com:42783 (for central admin))
+#192.168.66.109 envstateservice.invtitle.com			    #Redirects to DEV01 envstateservice load balancer (Example Call: https://envstateservice.invtitle.com/v1/version)
+#192.168.66.91  systemhealth.invtitle.com                   #Redirects to DEV01 System Health Website (Example Call: http://systemhealth.invtitle.com)
+#192.168.66.95  systemhealthsite.invtitle.com               #Redirects to DEV01 System Health Site Website (Example Call: https://systemhealthsite.invtitle.com)
+
+#192.168.66.150 NotificationSvcs		    				#Redirects to DEV01 Services Server load balancer
+#192.168.66.150 SecuritySvcs			    				#Redirects to DEV01 Services Server load balancer
+#192.168.66.150 AuthenticationSvcs		    				#Redirects to DEV01 Services Server load balancer
+#192.168.66.150 WorkflowSvcs			    				#Redirects to DEV01 Services Server load balancer
+#192.168.66.154 FolioSvcs									#Redirects to DEV01 Services Server load balancer
+#192.168.66.150 TitleSvcs									#Redirects to DEV01 Services Server load balancer
+#192.168.66.150 DocumentMgmtSvcs							#Redirects to DEV01 Services Server load balancer
+#192.168.66.150 ExceptionHistorySvcs						#Redirects to DEV01 Services Server load balancer
+#192.168.66.150 ExcludedPartiesSvcs							#Redirects to DEV01 Services Server load balancer
+#192.168.66.150 IssuingOfficeSvcs							#Redirects to DEV01 Services Server load balancer
+#192.168.66.150 AccountSvcs									#Redirects to DEV01 Services Server load balancer
+#192.168.66.150 ContactSvcs									#Redirects to DEV01 Services Server load balancer
+#192.168.66.150 ProviderSvcs									#Redirects to DEV01 Services Server load balancer
+#192.168.66.120 SPSSVCS										#Redirects to DEV01 SPS Services Server load balancer
+#192.168.66.150 ProductItemSvcs								#Redirects to DEV01 Services Server load balancer
+#192.168.66.151 SpsProviderSyncServer 						#Redirects to DEV01 B0101 Server
+#192.168.66.160 EfliteInterfaceSvcs							#Redirects to DEV01 EFLITE Interface Server load balancer
+#192.168.66.150 EfliteSvcs									#Redirects to DEV01 EFLITE Server load balancer
+#192.168.66.90  SystemHealthSvcs            				#Redirects to DEV01 P0101 load blancer for SystemHealthService
+
+
+#192.168.66.201 SystemInstrumentationDB	    				#Redirects to DEV01 SQL Server
+#192.168.66.201 NotificationDB			    				#Redirects to DEV01 SQL Server
+#192.168.66.201 UserSecurityDB			    				#Redirects to DEV01 SQL Server
+#192.168.66.201 ClientPortalDB								#Redirects to DEV01 SQL Server
+#192.168.66.201 ExternalDB									#Redirects to DEV01 SQL Server
+#192.168.66.201 FolioDB										#Redirects to DEV01 SQL Server
+#192.168.66.201 ProductItemDb								#Redirects to DEV01 SQL Server
+#192.168.66.201 ArtifactDB									#Redirects to DEV01 SQL Server
+#192.168.66.201 TitleDB										#Redirects to DEV01 SQL Server
+#192.168.66.201 DocumentManagementDB						#Redirects to DEV01 SQL Server
+#192.168.66.201 ProviderDB									#Redirects to DEV01 SQL Server
+#192.168.66.201 WorkflowDb									#Redirects to DEV01 SQL Server
+#192.168.66.201 AppSQLServer								#Redirects to DEV01 2K16 SQL Server
+#192.168.66.211 SalesForceDb								#Redirects to DEV01 2K16 SalesForce SQL Server
+#192.168.66.216 ReportsDB                   				#Redirects to DEV01 2K16 Report SQL Server
+#192.168.66.91 SystemHealthDB                               #Redirects to DEV01 PE SQL Server
+#192.168.66.201 EfliteDb									#Redirects to DEV01 SQL Server
+
+192.168.66.111	DEV01A0103									#Redirects DEV01 2K19 Client Portal Server (External Facing)
+192.168.66.112	DEV01A0104									#Redirects DEV01 2K19 Client Portal Server (External Facing)
+192.168.66.121	DEV01A0201									#Redirects DEV01 SoftPro Select Server
+192.168.66.122	DEV01A0202									#Redirects DEV01 SoftPro Select Server
+192.168.66.161  DEV01A0401									#Riderects DEV01 EFLITE Interface Server
+192.168.66.162  DEV01A0402									#Riderects DEV01 EFLITE Interface Server
+192.168.66.153	DEV01B0103									#Redirects DEV01 2K19 Services Server
+192.168.66.154	DEV01B0104									#Redirects DEV01 2K19 Services Server
+192.168.66.181	DEV01B0401									#Redirects DEV01 Elastic Search Server
+192.168.66.182	DEV01B0402									#Redirects DEV01 Elastic Search Server
+192.168.66.191  DEV01B0501								    #Redirects DEV01 Title Policy Processing Server
+192.168.66.201	DEV01C0102									#Redirects DEV01 2K16 SQL Server
+192.168.66.211  DEV01C0202									#Redirects DEV01 2K16 SalesForce SQL Server
+192.168.66.216	DEV01C0302									#Redirects DEV01 2K16 Report SQL Server
+192.168.66.240	DEV01C0501									#Redirects DEV01 SPS SQL Server
+192.168.66.250	DEV01F0101       							#Redirects DEV01 Artifact File Server
+192.168.66.252  DEV01F0501                                  #Redirects DEV01 SPS Artifact File Server
+192.168.66.91   DEV01P0101									#Redirects DEV01 PE Server (Includes SQL Server and App server)
+
+
+#**************************************************************************************************************************************************
+#*** Development Environment (DEV02)
+#**************************************************************************************************************************************************
+
+#192.168.69.100	portal.invtitle.com 	    				#Redirects to DEV02 Client Portal Server load balancer (Example: https://portal.invtitle.com)
+#192.168.69.104 crmexternalservice.invtitle.com			    #Redirects to DEV02 external service server load balancer (Example Call: GET https://crmexternalservice.invtitle.com/v1/pings/shallow)
+#192.168.69.106 externalsvcsforramquest.invtitle.com		#Redirects to DEV02 external service server load balancer (Example Call: POST https://externalsvcsforramquest.invtitle.com/v1/pings/shallow)
+#192.168.69.105	externalsvcsforsoftpro.invtitle.com			#Redirects to DEV02 external service server load balancer (Example Call: POST https://externalsvcsforsoftpro.invtitle.com/v1/pings/shallow)
+#192.168.69.115 externalsvcsforsoftproselect.invtitle.com	#Redirects to DEV02 external service server load balancer (Example Call: POST https://externalsvcsforsoftproselect.invtitle.com/v1/pings/shallow)
+#192.168.69.110 externalsvcsforlandtech.invtitle.com	    #Redirects to DEV02 external service server load balancer (Example Call: POST https://externalsvcsforlandtech.invtitle.com/v1/pings/shallow)
+#192.168.69.170	sharepoint									#Redirects to DEV02 SharePoint load balancer (http://sharepoint.int.invtitle.com (for Team site) and http://sharepoint.int.invtitle.com:42783 (for central admin))
+#192.168.69.109 envstateservice.invtitle.com			    #Redirects to DEV02 envstateservice load balancer (Example Call: https://envstateservice.invtitle.com/v1/version)
+#192.168.69.91  systemhealth.invtitle.com                   #Redirects to DEV02 System Health Website (Example Call: http://systemhealth.invtitle.com)
+#192.168.69.95  systemhealthsite.invtitle.com               #Redirects to DEV02 System Health Site Website (Example Call: https://systemhealthsite.invtitle.com)
+
+#192.168.69.150 NotificationSvcs		    				#Redirects to DEV02 Services Server load balancer
+#192.168.69.150 SecuritySvcs			    				#Redirects to DEV02 Services Server load balancer
+#192.168.69.150 AuthenticationSvcs		    				#Redirects to DEV02 Services Server load balancer
+#192.168.69.150 WorkflowSvcs			    				#Redirects to DEV02 Services Server load balancer
+#192.168.69.150 FolioSvcs									#Redirects to DEV02 Services Server load balancer
+#192.168.69.150 TitleSvcs									#Redirects to DEV02 Services Server load balancer
+#192.168.69.150 DocumentMgmtSvcs							#Redirects to DEV02 Services Server load balancer
+#192.168.69.150 ExceptionHistorySvcs						#Redirects to DEV02 Services Server load balancer
+#192.168.69.150 ExcludedPartiesSvcs							#Redirects to DEV02 Services Server load balancer
+#192.168.69.150 IssuingOfficeSvcs							#Redirects to DEV02 Services Server load balancer
+#192.168.69.150 AccountSvcs									#Redirects to DEV02 Services Server load balancer
+#192.168.69.150 ContactSvcs									#Redirects to DEV02 Services Server load balancer
+#192.168.69.150 ProviderSvcs								#Redirects to DEV02 Services Server load balancer
+#192.168.69.120 SPSSVCS										#Redirects to DEV02 SPS Services Server load balancer
+#192.168.69.150 ProductItemSvcs								#Redirects to DEV02 Services Server load balancer
+#192.168.69.151 SpsProviderSyncServer 						#Redirects to DEV02 B0101 Server
+#192.168.69.160 EfliteInterfaceSvcs							#Redirects to DEV02 EFLITE Interface Server load balancer
+#192.168.69.150 EfliteSvcs									#Redirects to DEV02 EFLITE Server load balancer
+#192.168.69.90  SystemHealthSvcs            				#Redirects to DEV02 P0101 load blancer for SystemHealthService
+
+#192.168.69.201 SystemInstrumentationDB	    				#Redirects to DEV02 SQL Server
+#192.168.69.201 NotificationDB			    				#Redirects to DEV02 SQL Server
+#192.168.69.201 UserSecurityDB			    				#Redirects to DEV02 SQL Server
+#192.168.69.201 ClientPortalDB								#Redirects to DEV02 SQL Server
+#192.168.69.201 ExternalDB									#Redirects to DEV02 SQL Server
+#192.168.69.201 FolioDB										#Redirects to DEV02 SQL Server
+#192.168.69.201 ProductItemDb								#Redirects to DEV02 SQL Server
+#192.168.69.201 ArtifactDB									#Redirects to DEV02 SQL Server
+#192.168.69.201 TitleDB										#Redirects to DEV02 SQL Server
+#192.168.69.201 DocumentManagementDB						#Redirects to DEV02 SQL Server
+#192.168.69.201 ProviderDB									#Redirects to DEV02 SQL Server
+#192.168.69.201 WorkflowDb									#Redirects to DEV02 SQL Server
+#192.168.69.201 AppSQLServer								#Redirects to DEV02 2K16 SQL Server
+#192.168.69.211 SalesForceDb								#Redirects to DEV02 2K16 SalesForce SQL Server
+#192.168.69.216 ReportsDB                   					#Redirects to DEV02 2K16 Report SQL Server
+#192.168.69.91 SystemHealthDB                               #Redirects to DEV02 PE SQL Server
+#192.168.69.201 EfliteDb									#Redirects to DEV02 SQL Server
+
+
+192.168.69.111	DEV02A0103									#Redirects DEV02 2K19 Client Portal Server (External Facing)
+192.168.69.112	DEV02A0104									#Redirects DEV02 2K19 Client Portal Server (External Facing)
+192.168.69.121	DEV02A0201									#Redirects DEV02 SoftPro Select Server
+192.168.69.122	DEV02A0202									#Redirects DEV02 SoftPro Select Server
+192.168.69.161  DEV02A0401									#Riderects DEV02 EFLITE Interface Server
+192.168.69.162  DEV02A0402									#Riderects DEV02 EFLITE Interface Server
+192.168.69.153	DEV02B0103									#Redirects DEV02 2K19 Services Server
+192.168.69.154	DEV02B0104									#Redirects DEV02 2K19 Services Server
+192.168.69.171	DEV02B0301									#Redirects DEV02 SharePoint Server
+192.168.69.172	DEV02B0302									#Redirects DEV02 SharePoint Server
+192.168.69.181	DEV02B0401									#Redirects DEV02 Elastic Search Server
+192.168.69.182	DEV02B0402									#Redirects DEV02 Elastic Search Server
+192.168.69.191  DEV02B0501								    #Redirects DEV02 Title Policy Processing Server
+192.168.69.201	DEV02C0102									#Redirects DEV02 2K16 SQL Server
+192.168.69.211  DEV02C0202									#Redirects DEV02 2K16 SalesForce SQL Server
+192.168.69.216	DEV02C0302									#Redirects DEV02 2K16 Report SQL Server
+192.168.69.240	DEV02C0501									#Redirects DEV02 SPS SQL Server
+192.168.69.250	DEV02F0101       							#Redirects DEV02 Artifact File Server
+192.168.69.252  DEV02F0501                                  #Redirects DEV02 SPS Artifact File Server
+192.168.69.91   DEV02P0101									#Redirects DEV02 PE Server (Includes SQL Server and App server)
+
+
+#**************************************************************************************************************************************************
+#*** Development Environment (DEV03)
+#**************************************************************************************************************************************************
+
+#192.168.75.100	portal.invtitle.com 	    				#Redirects to DEV03 Client Portal Server load balancer (Example: https://portal.invtitle.com)
+#192.168.75.104 crmexternalservice.invtitle.com			    #Redirects to DEV03 external service server load balancer (Example Call: GET https://crmexternalservice.invtitle.com/v1/pings/shallow)
+#192.168.75.106 externalsvcsforramquest.invtitle.com			#Redirects to DEV03 external service server load balancer (Example Call: POST https://externalsvcsforramquest.invtitle.com/v1/pings/shallow)
+#192.168.75.105	externalsvcsforsoftpro.invtitle.com			#Redirects to DEV03 external service server load balancer (Example Call: POST https://externalsvcsforsoftpro.invtitle.com/v1/pings/shallow)
+#192.168.75.115 externalsvcsforsoftproselect.invtitle.com	#Redirects to DEV03 external service server load balancer (Example Call: POST https://externalsvcsforsoftproselect.invtitle.com/v1/pings/shallow)
+#192.168.75.110 externalsvcsforlandtech.invtitle.com	    	#Redirects to DEV03 external service server load balancer (Example Call: POST https://externalsvcsforlandtech.invtitle.com/v1/pings/shallow)
+#192.168.75.170	sharepoint									#Redirects to Dev03 SharePoint load balancer (http://sharepoint.int.invtitle.com (for Team site) and http://sharepoint.int.invtitle.com:42783 (for central admin))
+#192.168.75.109 envstateservice.invtitle.com			    	#Redirects to DEV03 envstateservice load balancer (Example Call: https://envstateservice.invtitle.com/v1/version)
+#192.168.75.91  systemhealth.invtitle.com                   #Redirects to DEV03 System Health Website (Example Call: http://systemhealth.invtitle.com)
+#192.168.75.95  systemhealthsite.invtitle.com                #Redirects to DEV03 System Health Site Website (Example Call: https://systemhealthsite.invtitle.com)
+
+#192.168.75.150 NotificationSvcs		     				#Redirects to DEV03 Services Server load balancer
+#192.168.75.150 SecuritySvcs			     				#Redirects to DEV03 Services Server load balancer
+#192.168.75.150 AuthenticationSvcs		    				#Redirects to DEV03 Services Server load balancer
+#192.168.75.150 WorkflowSvcs			    				#Redirects to DEV03 Services Server load balancer
+#192.168.75.150 FolioSvcs									#Redirects to DEV03 Services Server load balancer
+#192.168.75.140 FolioChangeProcessorSvcs	    			#Redirects to DEV03 Services Server load balancer (Single Service Only, aka 151 server only)
+#192.168.75.150 SearchSvcs									#Redirects to DEV03 Services Server load balancer
+#192.168.75.181 ElasticSearch01								#Redirects to DEV03 ElasticSearch 01 server
+#192.168.75.182 ElasticSearch02								#Redirects to DEV03 ElasticSearch 02 server
+#192.168.75.150 TitleSvcs									#Redirects to DEV03 Services Server load balancer
+#192.168.75.150 DocumentMgmtSvcs							#Redirects to DEV03 Services Server load balancer
+#192.168.75.150 ExceptionHistorySvcs						#Redirects to DEV03 Services Server load balancer
+#192.168.75.150 ExcludedPartiesSvcs							#Redirects to DEV03 Services Server load balancer
+#192.168.75.150 IssuingOfficeSvcs							#Redirects to DEV03 Services Server load balancer
+#192.168.75.150 AccountSvcs									#Redirects to DEV03 Services Server load balancer
+#192.168.75.150 ContactSvcs									#Redirects to DEV03 Services Server load balancer
+#192.168.75.150 ProviderSvcs								#Redirects to DEV03 Services Server load balancer
+#192.168.75.120 SPSSVCS										#Redirects to DEV03 SPS Services Server load balancer
+#192.168.75.160 EfliteSvcs									#Redirects to DEV03 EFLITE Interface Server load balancer
+#192.168.75.151 LawsonProcessor1							#Redirects to DEV03 Services Server load balancer (Single Service Only, aka 151 server only)
+#192.168.75.150 ProductItemSvcs								#Redirects to DEV03 Services Server load balancer
+#192.168.75.151 SpsProviderSyncServer 						#Redirects to DEV03 B0101 Server
+#192.168.75.160 EfliteInterfaceSvcs							#Redirects to DEV03 EFLITE Interface Server load balancer
+#192.168.75.150 EfliteSvcs									#Redirects to DEV03 EFLITE Server load balancer
+#192.168.75.90  SystemHealthSvcs            				#Redirects to DEV03 P0101 load blancer for SystemHealthService
+
+#192.168.75.201 SystemInstrumentationDB	    				#Redirects to DEV03 SQL Server
+#192.168.75.201 NotificationDB			    				#Redirects to DEV03 SQL Server
+#192.168.75.201 UserSecurityDB			    				#Redirects to DEV03 SQL Server
+#192.168.75.201 ClientPortalDB								#Redirects to DEV03 SQL Server
+#192.168.75.201 ExternalDB									#Redirects to DEV03 SQL Server
+#192.168.75.201 FolioDB										#Redirects to DEV03 SQL Server
+#192.168.75.201 ProductItemDb								#Redirects to DEV03 SQL Server
+#192.168.75.201 ArtifactDB									#Redirects to DEV03 SQL Server
+#192.168.75.201 TitleDB										#Redirects to DEV03 SQL Server
+#192.168.75.201 DocumentManagementDB						#Redirects to DEV03 SQL Server
+#192.168.75.201 ProviderDB									#Redirects to DEV03 SQL Server
+#192.168.75.201 AppSQLServer								#Redirects to DEV03 SQL Server
+#192.168.75.211 SalesForceDb								#Redirects to DEV03 Datawarehouse SQL Server
+#192.168.75.216 ReportsDB                    				#Redirects to DEV03 Report SQL Server
+#192.168.75.91 SystemHealthDB                               #Redirects to DEV03 PE SQL Server
+#192.168.75.201 EfliteDb									#Redirects to DEV03 SQL Server
+
+192.168.75.111	DEV03A0103									#Redirects DEV03 2K19 Client Portal Server (External Facing)
+192.168.75.112	DEV03A0104									#Redirects DEV03 2K19 Client Portal Server (External Facing)
+192.168.75.121	DEV03A0201									#Redirects DEV03 SoftPro Select Server
+192.168.75.122	DEV03A0202									#Redirects DEV03 SoftPro Select Server
+192.168.75.161  DEV03A0401									#Riderects DEV03 EFLITE Interface Server
+192.168.75.162  DEV03A0402									#Riderects DEV03 EFLITE Interface Server
+192.168.75.153	DEV03B0103									#Redirects DEV03 2K19 Services Server
+192.168.75.154	DEV03B0104									#Redirects DEV03 2K19 Services Server
+192.168.75.171	DEV03B0301									#Redirects DEV03 SharePoint Server
+192.168.75.172	DEV03B0302									#Redirects DEV03 SharePoint Server
+192.168.75.181	DEV03B0401									#Redirects DEV03 Elastic Search Server
+192.168.75.182	DEV03B0402									#Redirects DEV03 Elastic Search Server
+192.168.75.191  DEV03B0501									#Redirects DEV03 Title Policy Processing Server
+192.168.75.201	DEV03C0102									#Redirects DEV03 2K16 SQL Server
+192.168.75.211  DEV03C0202									#Redirects DEV03 2K16 SalesForce SQL Server
+192.168.75.216	DEV03C0302									#Redirects DEV02 2K16 Report SQL Server
+192.168.75.240	DEV03C0501									#Redirects DEV03 SPS SQL Server
+192.168.75.250	DEV03F0101       							#Redirects DEV03 Artifact File Server
+192.168.75.252  DEV03F0501                                  #Redirects DEV03 SPS Artifact File Server
+192.168.75.91   DEV03P0101									#Redirects DEV03 PE Server (Includes SQL Server and App server)
+
+
+#**************************************************************************************************************************************************
+#*** PEDEV01 Environment
+#**************************************************************************************************************************************************
+
+#192.168.72.100	portal.invtitle.com 	    				#Redirects to PEDEV01 Client Portal Server load balancer (Example: https://portal.invtitle.com)
+#192.168.72.104 crmexternalservice.invtitle.com			    #Redirects to PEDEV01 external service server load balancer (Example Call: GET https://crmexternalservice.invtitle.com/v1/pings/shallow)
+#192.168.72.106 externalsvcsforramquest.invtitle.com			#Redirects to PEDEV01 external service server load balancer (Example Call: POST https://externalsvcsforramquest.invtitle.com/v1/pings/shallow)
+#192.168.72.105	externalsvcsforsoftpro.invtitle.com			#Redirects to PEDEV01 external service server load balancer (Example Call: POST https://externalsvcsforsoftpro.invtitle.com/v1/pings/shallow)
+#192.168.72.115 externalsvcsforsoftproselect.invtitle.com	#Redirects to PEDEV01 external service server load balancer (Example Call: POST https://externalsvcsforsoftproselect.invtitle.com/v1/pings/shallow)
+#192.168.72.110 externalsvcsforlandtech.invtitle.com	    #Redirects to PEDEV01 external service server load balancer (Example Call: POST https://externalsvcsforlandtech.invtitle.com/v1/pings/shallow)
+#192.168.72.170	sharepoint									#Redirects to PEDEV01 SharePoint load balancer (http://sharepoint.int.invtitle.com (for Team site) and http://sharepoint.int.invtitle.com:42783 (for central admin))
+#192.168.72.109 envstateservice.invtitle.com			    #Redirects to PEDEV01 envstateservice load balancer (Example Call: https://envstateservice.invtitle.com/v1/version)
+#192.168.72.91  systemhealth.invtitle.com                   #Redirects to PEDEV01 System Health Website (Example Call: http://systemhealth.invtitle.com)
+#192.168.72.95  systemhealthsite.invtitle.com               #Redirects to PEDEV01 System Health Site Website (Example Call: https://systemhealthsite.invtitle.com)
+
+#192.168.72.150 NotificationSvcs		     				#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.150 SecuritySvcs			     				#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.150 AuthenticationSvcs		    				#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.150 WorkflowSvcs			    				#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.150 FolioSvcs									#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.140 FolioChangeProcessorSvcs	    			#Redirects to PEDEV01 Services Server load balancer (Single Service Only, aka 151 server only)
+#192.168.72.150 SearchSvcs									#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.181 ElasticSearch01								#Redirects to PEDEV01 ElasticSearch 01 server
+#192.168.72.182 ElasticSearch02								#Redirects to PEDEV01 ElasticSearch 02 server
+#192.168.72.150 TitleSvcs									#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.150 DocumentMgmtSvcs							#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.150 ExceptionHistorySvcs						#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.150 ExcludedPartiesSvcs							#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.150 IssuingOfficeSvcs							#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.150 AccountSvcs									#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.150 ContactSvcs									#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.150 ProviderSvcs								#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.120 SPSSVCS										#Redirects to PEDEV01 SPS Services Server load balancer
+#192.168.72.160 EfliteSvcs									#Redirects to PEDEV01 EFLITE Interface Server load balancer
+#192.168.72.151 LawsonProcessor1							#Redirects to PEDEV01 Services Server load balancer (Single Service Only, aka 151 server only)
+#192.168.72.150 ProductItemSvcs								#Redirects to PEDEV01 Services Server load balancer
+#192.168.72.151 SpsProviderSyncServer 						#Redirects to PEDEV01 B0101 Server
+#192.168.72.160 EfliteInterfaceSvcs							#Redirects to PEDEV01 EFLITE Interface Server load balancer
+#192.168.72.150 EfliteSvcs									#Redirects to PEDEV01 EFLITE Server load balancer
+#192.168.72.90  SystemHealthSvcs            					#Redirects to PEDEV01 P0101 load blancer for SystemHealthService
+
+#192.168.72.201 SystemInstrumentationDB	    				#Redirects to PEDEV01 SQL Server
+#192.168.72.201 NotificationDB			    				#Redirects to PEDEV01 SQL Server
+#192.168.72.201 UserSecurityDB			    				#Redirects to PEDEV01 SQL Server
+#192.168.72.201 ClientPortalDB								#Redirects to PEDEV01 SQL Server
+#192.168.72.201 ExternalDB									#Redirects to PEDEV01 SQL Server
+#192.168.72.201 FolioDB										#Redirects to PEDEV01 SQL Server
+#192.168.72.201 ProductItemDb								#Redirects to PEDEV01 SQL Server
+#192.168.72.201 ArtifactDB									#Redirects to PEDEV01 SQL Server
+#192.168.72.201 TitleDB										#Redirects to PEDEV01 SQL Server
+#192.168.72.201 DocumentManagementDB						#Redirects to PEDEV01 SQL Server
+#192.168.72.201 ProviderDB									#Redirects to PEDEV01 SQL Server
+#192.168.72.201 AppSQLServer								#Redirects to PEDEV01 SQL Server
+#192.168.72.211 SalesForceDb								#Redirects to PEDEV01 Datawarehouse SQL Server
+#192.168.72.216 ReportsDB                    				#Redirects to PEDEV01 Report SQL Server
+#192.168.72.240	SpsDb										#Redirects to PEDEV01 SPS SQL Server
+#192.168.72.91 SystemHealthDB                               #Redirects to PEDEV01 PE SQL Server
+#192.168.72.201 EfliteDb										#Redirects to PEDEV01 SQL Server
+#192.168.72.245 EfliteLegacyDb								#Redirects to PEDEV01 SQL Server
+
+192.168.72.111	PEDEV01A0103								#Redirects PEDEV01 2K19 Client Portal Server (External Facing)
+192.168.72.112	PEDEV01A0104								#Redirects PEDEV01 2K19 Client Portal Server (External Facing)
+192.168.72.121	PEDEV01A0201								#Redirects PEDEV01 SoftPro Select Server
+192.168.72.122	PEDEV01A0202								#Redirects PEDEV01 SoftPro Select Server
+192.168.72.161  PEDEV01A0401								#Riderects PEDEV01 EFLITE Interface Server
+192.168.72.162  PEDEV01A0402								#Riderects PEDEV01 EFLITE Interface Server
+192.168.72.153	PEDEV01B0103								#Redirects PEDEV01 2K19 Services Server
+192.168.72.154	PEDEV01B0104								#Redirects PEDEV01 2K19 Services Server
+192.168.72.171	PEDEV01B0301								#Redirects PEDEV01 SharePoint Server
+192.168.72.172	PEDEV01B0302								#Redirects PEDEV01 SharePoint Server
+192.168.72.181	PEDEV01B0401								#Redirects PEDEV01 Elastic Search Server
+192.168.72.182	PEDEV01B0402								#Redirects PEDEV01 Elastic Search Server
+192.168.72.191  PEDEV01B0501								#Redirects PEDEV01 Title Policy Processing Server
+192.168.72.201	PEDEV01C0102								#Redirects PEDEV01 2K16 SQL Server
+192.168.72.211  PEDEV01C0202								#Redirects PEDEV01 2K16 SalesForce SQL Server
+192.168.72.216	PEDEV01C0302								#Redirects PEDEV01 2K16 Report SQL Server
+192.168.72.240	PEDEV01C0501								#Redirects PEDEV01 SPS SQL Server
+192.168.72.245	PEDEV01C0601								#Redirects PEDEV01 EFLITE SQL Server
+192.168.72.250	PEDEV01F0101       							#Redirects PEDEV01 Artifact File Server
+192.168.72.252  PEDEV01F0501                                #Redirects PEDEV01 SPS Artifact File Server
+192.168.72.91   PEDEV01P0101								#Redirects PEDEV01 PE Server (Includes SQL Server and App server)
+
+192.168.72.235	PEQA01TPA01									#Redirects PEDEV01 TPA01 Server (Legacy server recreated in ITICDOM)
+192.168.72.230	PEQA01TPLS02								#Redirects PEDEV01 TPALS Server (Legacy server recreated in ITICDOM)
+
+
+#**************************************************************************************************************************************************
+#*** Development Environment (QA01)
+#**************************************************************************************************************************************************
+
+#192.168.67.100	portal.invtitle.com 	    				#Redirects to QA01 Client Portal Server load balancer (Example: https://portal.invtitle.com)
+#192.168.67.104 crmexternalservice.invtitle.com			    #Redirects to QA01 external service server load balancer (Example Call: GET https://crmexternalservice.invtitle.com/v1/pings/shallow)
+#192.168.67.104 crmexternalservice.invtitle.com			    #Redirects to QA01 external service server load balancer (Example Call: GET https://crmexternalservice.invtitle.com/v1/pings/shallow)
+#192.168.67.106 externalsvcsforramquest.invtitle.com		#Redirects to QA01 external service server load balancer (Example Call: POST https://externalsvcsforramquest.invtitle.com/v1/pings/shallow)
+#192.168.67.105	externalsvcsforsoftpro.invtitle.com			#Redirects to QA01 external service server load balancer (Example Call: POST https://externalsvcsforsoftpro.invtitle.com/v1/pings/shallow)
+192.168.67.115 externalsvcsforsoftproselect.invtitle.com	#Redirects to QA01 external service server load balancer (Example Call: POST https://externalsvcsforsoftproselect.invtitle.com/v1/pings/shallow)
+#192.168.67.110 externalsvcsforlandtech.invtitle.com	    #Redirects to QA01 external service server load balancer (Example Call: POST https://externalsvcsforlandtech.invtitle.com/v1/pings/shallow)
+#192.168.67.170	sharepoint									#Redirects to QA01 SharePoint load balancer (http://sharepoint.int.invtitle.com (for Team site) and http://sharepoint.int.invtitle.com:42783 (for central admin))
+#192.168.67.109 envstateservice.invtitle.com			    #Redirects to QA01 envstateservice load balancer (Example Call: https://envstateservice.invtitle.com/v1/version)
+#192.168.67.91  systemhealth.invtitle.com                   #Redirects to QA01 System Health Website (Example Call: http://systemhealth.invtitle.com)
+#192.168.67.95  systemhealthsite.invtitle.com               #Redirects to QA01 System Health Site Website (Example Call: https://systemhealthsite.invtitle.com)
+
+#192.168.67.150 NotificationSvcs		    				#Redirects to QA01 Services Server load balancer
+#192.168.67.150 SecuritySvcs			    				#Redirects to QA01 Services Server load balancer
+#192.168.67.150 AuthenticationSvcs		    				#Redirects to QA01 Services Server load balancer
+#192.168.67.150 WorkflowSvcs			    				#Redirects to QA01 Services Server load balancer
+#192.168.67.150 FolioSvcs									#Redirects to QA01 Services Server load balancer
+#192.168.67.150 TitleSvcs									#Redirects to QA01 Services Server load balancer
+#192.168.67.150 DocumentMgmtSvcs							#Redirects to QA01 Services Server load balancer
+#192.168.67.150 ExceptionHistorySvcs						#Redirects to QA01 Services Server load balancer
+#192.168.67.150 ExcludedPartiesSvcs							#Redirects to QA01 Services Server load balancer
+#192.168.67.150 IssuingOfficeSvcs							#Redirects to QA01 Services Server load balancer
+#192.168.67.150 AccountSvcs									#Redirects to QA01 Services Server load balancer
+#192.168.67.150 ContactSvcs									#Redirects to QA01 Services Server load balancer
+#192.168.67.150 ProviderSvcs								#Redirects to QA01 Services Server load balancer
+#192.168.67.120 SPSSVCS										#Redirects to QA01 SPS Services Server load balancer
+#192.168.67.150 ProductItemSvcs								#Redirects to QA01 Services Server load balancer
+#192.168.67.151 SpsProviderSyncServer 						#Redirects to QA01 B0101 Server
+#192.168.67.160 EfliteInterfaceSvcs							#Redirects to QA01 EFLITE Interface Server load balancer
+#192.168.67.150 EfliteSvcs									#Redirects to QA01 EFLITE Server load balancer
+#192.168.67.90  SystemHealthSvcs            				#Redirects to QA01 P0101 load blancer for SystemHealthService
+
+#192.168.67.201 SystemInstrumentationDB	    				#Redirects to QA01 SQL Server
+#192.168.67.201 NotificationDB			    				#Redirects to QA01 SQL Server
+#192.168.67.201 UserSecurityDB			    				#Redirects to QA01 SQL Server
+#192.168.67.201 ClientPortalDB								#Redirects to QA01 SQL Server
+#192.168.67.201 ExternalDB									#Redirects to QA01 SQL Server
+#192.168.67.201 FolioDB										#Redirects to QA01 SQL Server
+#192.168.67.201 ProductItemDb								#Redirects to QA01 SQL Server
+#192.168.67.201 ArtifactDB									#Redirects to QA01 SQL Server
+#192.168.67.201 TitleDB										#Redirects to QA01 SQL Server
+#192.168.67.201 DocumentManagementDB						#Redirects to QA01 SQL Server
+#192.168.67.201 ProviderDB									#Redirects to QA01 SQL Server
+#192.168.67.201 WorkflowDb									#Redirects to QA01 SQL Server
+#192.168.67.201 AppSQLServer								#Redirects to QA01 2K16 SQL Server
+#192.168.67.211 SalesForceDb								#Redirects to QA01 2K16 SalesForce SQL Server
+#192.168.67.216 ReportsDB                   				#Redirects to QA01 2K16 Report SQL Server
+#192.168.67.91 SystemHealthDB                               #Redirects to QA01 PE SQL Server
+#192.168.67.201 EfliteDb									#Redirects to QA01 SQL Server
+
+
+192.168.67.111	QA01A0103									#Redirects QA01 2K19 Client Portal Server (External Facing)
+192.168.67.112	QA01A0104									#Redirects QA01 2K19 Client Portal Server (External Facing)
+192.168.67.121	QA01A0201									#Redirects QA01 SoftPro Select Server
+192.168.67.122	QA01A0202									#Redirects QA01 SoftPro Select Server
+192.168.67.161  QA01A0401									#Riderects QA01 EFLITE Interface Server
+192.168.67.162  QA01A0402									#Riderects QA01 EFLITE Interface Server
+192.168.67.153	QA01B0103									#Redirects QA01 2K19 Services Server
+192.168.67.154	QA01B0104									#Redirects QA01 2K19 Services Server
+192.168.67.171	QA01B0301									#Redirects QA01 SharePoint Server
+192.168.67.172	QA01B0302									#Redirects QA01 SharePoint Server
+192.168.67.181	QA01B0401									#Redirects QA01 Elastic Search Server
+192.168.67.182	QA01B0402									#Redirects QA01 Elastic Search Server
+192.168.67.191  QA01B0501								    #Redirects QA01 Title Policy Processing Server
+192.168.67.201	QA01C0102									#Redirects QA01 2K16 SQL Server
+192.168.67.211  QA01C0202									#Redirects QA01 2K16 SalesForce SQL Server
+192.168.67.216	QA01C0302									#Redirects QA01 2K16 Report SQL Server
+192.168.67.240	QA01C0501									#Redirects QA01 SPS SQL Server
+192.168.67.250	QA01F0101       							#Redirects QA01 Artifact File Server
+192.168.67.252  QA01F0501                                  	#Redirects QA01 SPS Artifact File Server
+192.168.67.91   QA01P0101									#Redirects QA01 PE Server (Includes SQL Server and App server)
+
+
+#**************************************************************************************************************************************************
+#*** QA02 Environment
+#**************************************************************************************************************************************************
+
+#192.168.70.100	portal.invtitle.com 	    				#Redirects to QA02 Client Portal Server load balancer (Example: https://portal.invtitle.com)
+#192.168.70.104 crmexternalservice.invtitle.com			    #Redirects to QA02 external service server load balancer (Example Call: GET https://crmexternalservice.invtitle.com/v1/pings/shallow)
+#192.168.70.106 externalsvcsforramquest.invtitle.com		#Redirects to QA02 external service server load balancer (Example Call: POST https://externalsvcsforramquest.invtitle.com/v1/pings/shallow)
+#192.168.70.105	externalsvcsforsoftpro.invtitle.com			#Redirects to QA02 external service server load balancer (Example Call: POST https://externalsvcsforsoftpro.invtitle.com/v1/pings/shallow)
+#192.168.70.115 externalsvcsforsoftproselect.invtitle.com	#Redirects to QA02 external service server load balancer (Example Call: POST https://externalsvcsforsoftproselect.invtitle.com/v1/pings/shallow)
+#192.168.70.110 externalsvcsforlandtech.invtitle.com	    #Redirects to QA02 external service server load balancer (Example Call: POST https://externalsvcsforlandtech.invtitle.com/v1/pings/shallow)
+#192.168.70.170	sharepoint									#Redirects to QA02 SharePoint load balancer (http://sharepoint.int.invtitle.com (for Team site) and http://sharepoint.int.invtitle.com:42783 (for central admin))
+#192.168.70.109 envstateservice.invtitle.com			    #Redirects to QA02 envstateservice load balancer (Example Call: https://envstateservice.invtitle.com/v1/version)
+#192.168.70.91  systemhealth.invtitle.com                   #Redirects to QA02 System Health Website (Example Call: http://systemhealth.invtitle.com)
+#192.168.70.95  systemhealthsite.invtitle.com               #Redirects to QA02 System Health Site Website (Example Call: https://systemhealthsite.invtitle.com)
+
+#192.168.70.150 NotificationSvcs		    				#Redirects to QA02 Services Server load balancer
+#192.168.70.150 SecuritySvcs			    				#Redirects to QA02 Services Server load balancer
+#192.168.70.150	AuthenticationSvcs		    				#Redirects to QA02 Services Server load balancer
+#192.168.70.150 WorkflowSvcs			    				#Redirects to QA02 Services Server load balancer
+#192.168.70.150 FolioSvcs									#Redirects to QA02 Services Server load balancer
+#192.168.70.150 TitleSvcs									#Redirects to QA02 Services Server load balancer
+#192.168.70.150 DocumentMgmtSvcs							#Redirects to QA02 Services Server load balancer
+#192.168.70.150 ExceptionHistorySvcs						#Redirects to QA02 Services Server load balancer
+#192.168.70.150 ExcludedPartiesSvcs							#Redirects to QA02 Services Server load balancer
+#192.168.70.150	IssuingOfficeSvcs							#Redirects to QA02 Services Server load balancer
+#192.168.70.150 AccountSvcs									#Redirects to QA02 Services Server load balancer
+#192.168.70.150 ContactSvcs									#Redirects to QA02 Services Server load balancer
+#192.168.70.150 ProviderSvcs								#Redirects to QA02 Services Server load balancer
+#192.168.70.150 ProductItemSvcs								#Redirects to QA02 Services Server load balancer
+#192.168.70.151 SpsProviderSyncServer 						#Redirects to QA02 B0101 Server
+#192.168.70.160 EfliteInterfaceSvcs							#Redirects to QA02 EFLITE Interface Server load balancer
+#192.168.70.150 EfliteSvcs									#Redirects to QA02 EFLITE Server load balancer
+#192.168.70.90  SystemHealthSvcs            				#Redirects to QA02 P0101 load blancer for SystemHealthService
+
+#192.168.70.201 SystemInstrumentationDB	    				#Redirects to QA02 SQL Server
+#192.168.70.211 SalesForceDb								#Redirects to QA02 Datawarehouse SQL Server
+#192.168.70.120 ProviderDB									#Redirects to QA02 SQL Server
+#192.168.70.91 SystemHealthDB                               #Redirects to QA02 PE SQL Server
+#192.168.70.201 EfliteDb									#Redirects to QA02 SQL Server
+
+192.168.70.111	QA02A0103									#Redirects QA02 2K19 Client Portal Server (External Facing)
+192.168.70.112	QA02A0104									#Redirects QA02 2K19 Client Portal Server (External Facing)
+192.168.70.121	QA02A0201									#Redirects QA02 SoftPro Select Server
+192.168.70.122	QA02A0202									#Redirects QA02 SoftPro Select Server
+192.168.70.161  QA02A0401									#Riderects QA02 EFLITE Interface Server
+192.168.70.162  QA02A0402									#Riderects QA02 EFLITE Interface Server
+192.168.70.153	QA02B0103									#Redirects QA02 2K19 Services Server
+192.168.70.154	QA02B0104									#Redirects QA02 2K19 Services Server
+192.168.70.171	QA02B0301									#Redirects QA02 SharePoint Server
+192.168.70.172	QA02B0302									#Redirects QA02 SharePoint Server
+192.168.70.181	QA02B0401									#Redirects QA02 Elastic Search Server
+192.168.70.182	QA02B0402									#Redirects QA02 Elastic Search Server
+192.168.70.191  QA02B0501									#Redirects QA02 Title Policy Processing Server
+192.168.70.201	QA02C0102				    				#Redirects QA02 2K16 SQL Server
+192.168.70.211  QA02C0202									#Redirects QA02 2K16 SalesForce SQL Server
+192.168.70.216	QA02C0302									#Redirects QA02 2K16 Report SQL Server
+192.168.70.240	QA02C0501									#Redirects QA02 SPS SQL Server
+192.168.70.250	QA02F0101       							#Redirects QA02 Artifact File Server
+192.168.70.252  QA02F0501                                  	#Redirects QA02 SPS Artifact File Server
+192.168.70.91   QA02P0101									#Redirects QA02 PE Server (Includes SQL Server and App server)
+
+
+#**************************************************************************************************************************************************
+#*** QA03 Environment
+#**************************************************************************************************************************************************
+
+#192.168.76.100	portal.invtitle.com 	    				#Redirects to QA03 Client Portal Server load balancer (Example: https://portal.invtitle.com)
+#192.168.76.104 crmexternalservice.invtitle.com			    #Redirects to QA03 external service server load balancer (Example Call: GET https://crmexternalservice.invtitle.com/v1/pings/shallow)
+#192.168.76.106 externalsvcsforramquest.invtitle.com		#Redirects to QA03 external service server load balancer (Example Call: POST https://externalsvcsforramquest.invtitle.com/v1/pings/shallow)
+#192.168.76.105	externalsvcsforsoftpro.invtitle.com			#Redirects to QA03 external service server load balancer (Example Call: POST https://externalsvcsforsoftpro.invtitle.com/v1/pings/shallow)
+#192.168.76.115 externalsvcsforsoftproselect.invtitle.com	#Redirects to QA03 external service server load balancer (Example Call: POST https://externalsvcsforsoftproselect.invtitle.com/v1/pings/shallow)
+#192.168.76.110 externalsvcsforlandtech.invtitle.com	    #Redirects to QA03 external service server load balancer (Example Call: POST https://externalsvcsforlandtech.invtitle.com/v1/pings/shallow)
+#192.168.76.170	sharepoint									#Redirects to QA03 SharePoint load balancer (http://sharepoint.int.invtitle.com (for Team site) and http://sharepoint.int.invtitle.com:42783 (for central admin))
+#192.168.76.109 envstateservice.invtitle.com			    #Redirects to QA03 envstateservice load balancer (Example Call: https://envstateservice.invtitle.com/v1/version)
+#192.168.76.91  systemhealth.invtitle.com                   #Redirects to QA03 System Health Website (Example Call: http://systemhealth.invtitle.com)
+192.168.76.95  systemhealthsite.invtitle.com               #Redirects to QA03 System Health Site Website (Example Call: https://systemhealthsite.invtitle.com)
+
+#192.168.76.150 NotificationSvcs		     				#Redirects to QA03 Services Server load balancer
+#192.168.76.150 SecuritySvcs			     				#Redirects to QA03 Services Server load balancer
+#192.168.76.150 AuthenticationSvcs		    				#Redirects to QA03 Services Server load balancer
+#192.168.76.150 WorkflowSvcs			    				#Redirects to QA03 Services Server load balancer
+#192.168.76.150 FolioSvcs									#Redirects to QA03 Services Server load balancer
+#192.168.76.140 FolioChangeProcessorSvcs	    			#Redirects to QA03 Services Server load balancer (Single Service Only, aka 151 server only)
+#192.168.76.150 SearchSvcs									#Redirects to QA03 Services Server load balancer
+#192.168.76.181 ElasticSearch01								#Redirects to QA03 ElasticSearch 01 server
+#192.168.76.182 ElasticSearch02								#Redirects to QA03 ElasticSearch 02 server
+#192.168.76.150 TitleSvcs									#Redirects to QA03 Services Server load balancer
+#192.168.76.150 DocumentMgmtSvcs							#Redirects to QA03 Services Server load balancer
+#192.168.76.150 ExceptionHistorySvcs						#Redirects to QA03 Services Server load balancer
+#192.168.76.150 ExcludedPartiesSvcs							#Redirects to QA03 Services Server load balancer
+#192.168.76.150 IssuingOfficeSvcs							#Redirects to QA03 Services Server load balancer
+#192.168.76.150 AccountSvcs									#Redirects to QA03 Services Server load balancer
+#192.168.76.150 ContactSvcs									#Redirects to QA03 Services Server load balancer
+#192.168.76.150 ProviderSvcs								#Redirects to QA03 Services Server load balancer
+#192.168.76.160 EfliteSvcs									#Redirects to QA03 EFLITE Interface Server load balancer
+#192.168.76.150 ProductItemSvcs								#Redirects to QA03 Services Server load balancer
+#192.168.76.151 SpsProviderSyncServer 						#Redirects to QA03 B0101 Server
+#192.168.76.160 EfliteInterfaceSvcs							#Redirects to QA03 EFLITE Interface Server load balancer
+#192.168.76.150 EfliteSvcs									#Redirects to QA03 EFLITE Server load balancer
+#192.168.76.90  SystemHealthSvcs            				#Redirects to QA03 P0101 load blancer for SystemHealthService
+
+#192.168.76.201 FolioDB										#Redirects to QA03 SQL Server
+#192.168.76.201 ProductItemDb								#Redirects to QA03 SQL Server
+#192.168.76.201 ProviderDB									#Redirects to QA03 SQL Server
+#192.168.76.201 AppSQLServer								#Redirects to QA03 SQL Server
+#192.168.76.211 SalesForceDb								#Redirects to QA03 Datawarehouse SQL Server
+#192.168.76.91  SystemHealthDB                              #Redirects to QA03 PE SQL Server
+#192.168.76.201 EfliteDb									#Redirects to QA03 SQL Server
+
+192.168.76.111	QA03A0103									#Redirects QA03 2K19 Client Portal Server (External Facing)
+192.168.76.112	QA03A0104									#Redirects QA03 2K19 Client Portal Server (External Facing)
+192.168.76.121	QA03A0201									#Redirects QA03 SoftPro Select Server
+192.168.76.122	QA03A0202									#Redirects QA03 SoftPro Select Server
+192.168.76.161  QA03A0401									#Riderects QA03 EFLITE Interface Server
+192.168.76.162  QA03A0402									#Riderects QA03 EFLITE Interface Server
+192.168.76.153	QA03B0103									#Redirects QA03 2K19 Services Server
+192.168.76.154	QA03B0104									#Redirects QA03 2K19 Services Server
+192.168.76.171	QA03B0301									#Redirects QA03 SharePoint Server
+192.168.76.172	QA03B0302									#Redirects QA03 SharePoint Server
+192.168.76.181	QA03B0401									#Redirects QA03 Elastic Search Server
+192.168.76.182	QA03B0402									#Redirects QA03 Elastic Search Server
+192.168.76.191  QA03B0501									#Redirects QA03 Title Policy Processing Server
+192.168.76.201	QA03C0102									#Redirects QA03 2K16 SQL Server
+192.168.76.211  QA03C0202									#Redirects QA03 2K16 SalesForce SQL Server
+192.168.76.216	QA03C0302									#Redirects QA03 2K16 Report SQL Server
+192.168.76.240	QA03C0501									#Redirects QA03 SPS SQL Server
+192.168.76.250	QA03F0101       							#Redirects QA03 Artifact File Server
+192.168.76.252  QA03F0501                                  	#Redirects QA03 SPS Artifact File Server
+192.168.76.91   QA03P0101									#Redirects QA03 PE Server (Includes SQL Server and App server)
+
+
+#**************************************************************************************************************************************************
+#*** PEQA01 Environment
+#**************************************************************************************************************************************************
+
+#192.168.73.100	portal.invtitle.com 	    				#Redirects to PEQA01 Client Portal Server load balancer (Example: https://portal.invtitle.com)
+#192.168.73.104 crmexternalservice.invtitle.com			    #Redirects to PEQA01 external service server load balancer (Example Call: GET https://crmexternalservice.invtitle.com/v1/pings/shallow)
+#192.168.73.106 externalsvcsforramquest.invtitle.com		#Redirects to PEQA01 external service server load balancer (Example Call: POST https://externalsvcsforramquest.invtitle.com/v1/pings/shallow)
+#192.168.73.105	externalsvcsforsoftpro.invtitle.com			#Redirects to PEQA01 external service server load balancer (Example Call: POST https://externalsvcsforsoftpro.invtitle.com/v1/pings/shallow)
+#192.168.73.115 externalsvcsforsoftproselect.invtitle.com	#Redirects to PEQA01 external service server load balancer (Example Call: POST https://externalsvcsforsoftproselect.invtitle.com/v1/pings/shallow)
+#192.168.73.110 externalsvcsforlandtech.invtitle.com	    #Redirects to PEQA01 external service server load balancer (Example Call: POST https://externalsvcsforlandtech.invtitle.com/v1/pings/shallow)
+#192.168.73.170	sharepoint									#Redirects to PEQA01 SharePoint load balancer (http://sharepoint.int.invtitle.com (for Team site) and http://sharepoint.int.invtitle.com:42783 (for central admin))
+#192.168.73.109 envstateservice.invtitle.com			    #Redirects to PEQA01 envstateservice load balancer (Example Call: https://envstateservice.invtitle.com/v1/version)
+#192.168.73.91  systemhealth.invtitle.com                   #Redirects to PEQA01 System Health Website (Example Call: http://systemhealth.invtitle.com)
+#192.168.73.95  systemhealthsite.invtitle.com               #Redirects to PEQA01 System Health Site Website (Example Call: https://systemhealthsite.invtitle.com)
+
+#192.168.73.150 NotificationSvcs		     				#Redirects to PEQA01 Services Server load balancer
+#192.168.73.150 SecuritySvcs			     				#Redirects to PEQA01 Services Server load balancer
+#192.168.73.150 AuthenticationSvcs		    				#Redirects to PEQA01 Services Server load balancer
+#192.168.73.150 WorkflowSvcs			    				#Redirects to PEQA01 Services Server load balancer
+#192.168.73.150 FolioSvcs									#Redirects to PEQA01 Services Server load balancer
+#192.168.73.140 FolioChangeProcessorSvcs	    			#Redirects to PEQA01 Services Server load balancer (Single Service Only, aka 151 server only)
+#192.168.73.150 SearchSvcs									#Redirects to PEQA01 Services Server load balancer
+#192.168.73.181 ElasticSearch01								#Redirects to PEQA01 ElasticSearch 01 server
+#192.168.73.182 ElasticSearch02								#Redirects to PEQA01 ElasticSearch 02 server
+#192.168.73.150 TitleSvcs									#Redirects to PEQA01 Services Server load balancer
+#192.168.73.150 DocumentMgmtSvcs							#Redirects to PEQA01 Services Server load balancer
+#192.168.73.150 ExceptionHistorySvcs						#Redirects to PEQA01 Services Server load balancer
+#192.168.73.150 ExcludedPartiesSvcs							#Redirects to PEQA01 Services Server load balancer
+#192.168.73.150 IssuingOfficeSvcs							#Redirects to PEQA01 Services Server load balancer
+#192.168.73.150 AccountSvcs									#Redirects to PEQA01 Services Server load balancer
+#192.168.73.150 ContactSvcs									#Redirects to PEQA01 Services Server load balancer
+#192.168.73.150 ProviderSvcs								#Redirects to PEQA01 Services Server load balancer
+#192.168.73.120 SPSSVCS										#Redirects to PEQA01 SPS Services Server load balancer
+#192.168.73.160 EfliteSvcs									#Redirects to PEQA01 EFLITE Interface Server load balancer
+#192.168.73.151 LawsonProcessor1							#Redirects to PEQA01 Services Server load balancer (Single Service Only, aka 151 server only)
+#192.168.73.150 ProductItemSvcs								#Redirects to PEQA01 Services Server load balancer
+#192.168.73.151 SpsProviderSyncServer 						#Redirects to PEQA01 B0101 Server
+#192.168.73.160 EfliteInterfaceSvcs							#Redirects to PEQA01 EFLITE Interface Server load balancer
+#192.168.73.150 EfliteSvcs									#Redirects to PEQA01 EFLITE Server load balancer
+#192.168.73.90  SystemHealthSvcs            				#Redirects to PEQA01 P0101 load blancer for SystemHealthService
+
+#192.168.73.201 SystemInstrumentationDB	    				#Redirects to PEQA01 SQL Server
+#192.168.73.201 NotificationDB			    				#Redirects to PEQA01 SQL Server
+#192.168.73.201 UserSecurityDB			    				#Redirects to PEQA01 SQL Server
+#192.168.73.201 ClientPortalDB								#Redirects to PEQA01 SQL Server
+#192.168.73.201 ExternalDB									#Redirects to PEQA01 SQL Server
+#192.168.73.201 FolioDB										#Redirects to PEQA01 SQL Server
+#192.168.73.201 ProductItemDb								#Redirects to PEQA01 SQL Server
+#192.168.73.201 ArtifactDB									#Redirects to PEQA01 SQL Server
+#192.168.73.201 TitleDB										#Redirects to PEQA01 SQL Server
+#192.168.73.201 DocumentManagementDB						#Redirects to PEQA01 SQL Server
+#192.168.73.201 ProviderDB									#Redirects to PEQA01 SQL Server
+#192.168.73.201 AppSQLServer								#Redirects to PEQA01 SQL Server
+#192.168.73.211 SalesForceDb								#Redirects to PEQA01 Datawarehouse SQL Server
+#192.168.73.216 ReportsDB                    				#Redirects to PEQA01 Report SQL Server
+#192.168.73.91 SystemHealthDB                               #Redirects to PEQA01 PE SQL Server
+#192.168.73.201 EfliteDb									#Redirects to PEQA01 SQL Server
+
+192.168.73.111	PEQA01A0103									#Redirects PEQA01 2K19 Client Portal Server (External Facing)
+192.168.73.112	PEQA01A0104									#Redirects PEQA01 2K19 Client Portal Server (External Facing)
+192.168.73.121	PEQA01A0201									#Redirects PEQA01 SoftPro Select Server
+192.168.73.122	PEQA01A0202									#Redirects PEQA01 SoftPro Select Server
+192.168.73.161  PEQA01A0401									#Riderects PEQA01 EFLITE Interface Server
+192.168.73.162  PEQA01A0402									#Riderects PEQA01 EFLITE Interface Server
+192.168.73.153	PEQA01B0103									#Redirects PEQA01 2K19 Services Server
+192.168.73.154	PEQA01B0104									#Redirects PEQA01 2K19 Services Server
+192.168.73.171	PEQA01B0301									#Redirects PEQA01 SharePoint Server
+192.168.73.172	PEQA01B0302									#Redirects PEQA01 SharePoint Server
+192.168.73.181	PEQA01B0401									#Redirects PEQA01 Elastic Search Server
+192.168.73.182	PEQA01B0402									#Redirects PEQA01 Elastic Search Server
+192.168.73.191  PEQA01B0501									#Redirects PEQA01 Title Policy Processing Server
+192.168.73.201	PEQA01C0102									#Redirects PEQA01 2K16 SQL Server
+192.168.73.211  PEQA01C0202									#Redirects PEQA01 2K16 SalesForce SQL Server
+192.168.73.216	PEQA01C0302									#Redirects PEQA01 2K16 Report SQL Server
+192.168.73.240	PEQA01C0501									#Redirects PEQA01 SPS SQL Server
+192.168.73.250	PEQA01F0101       							#Redirects PEQA01 Artifact File Server
+192.168.73.252  PEQA01F0501                                 #Redirects PEQA01 SPS Artifact File Server
+192.168.73.91   PEQA01P0101									#Redirects PEQA01 PE Server (Includes SQL Server and App server)
+
+
+#**************************************************************************************************************************************************
+#*** TRN01 Environment
+#**************************************************************************************************************************************************
+
+#192.168.74.100	portal.invtitle.com 	    				#Redirects to TRN01 Client Portal Server load balancer (Example: https://portal.invtitle.com)
+#192.168.74.104 crmexternalservice.invtitle.com			    #Redirects to TRN01 external service server load balancer (Example Call: GET https://crmexternalservice.invtitle.com/v1/pings/shallow)
+#192.168.74.106 externalsvcsforramquest.invtitle.com		#Redirects to TRN01 external service server load balancer (Example Call: POST https://externalsvcsforramquest.invtitle.com/v1/pings/shallow)
+#192.168.74.105	externalsvcsforsoftpro.invtitle.com			#Redirects to TRN01 external service server load balancer (Example Call: POST https://externalsvcsforsoftpro.invtitle.com/v1/pings/shallow)
+#192.168.74.115 externalsvcsforsoftproselect.invtitle.com	#Redirects to TRN01 external service server load balancer (Example Call: POST https://externalsvcsforsoftproselect.invtitle.com/v1/pings/shallow)
+#192.168.74.110 externalsvcsforlandtech.invtitle.com	    #Redirects to TRN01 external service server load balancer (Example Call: POST https://externalsvcsforlandtech.invtitle.com/v1/pings/shallow)
+#192.168.74.170	sharepoint									#Redirects to TRN01 SharePoint load balancer (http://sharepoint.int.invtitle.com (for Team site) and http://sharepoint.int.invtitle.com:42783 (for central admin))
+#192.168.74.109 envstateservice.invtitle.com			    #Redirects to TRN01 envstateservice load balancer (Example Call: https://envstateservice.invtitle.com/v1/version)
+#192.168.74.91  systemhealth.invtitle.com                   #Redirects to TRN01 System Health Website (Example Call: http://systemhealth.invtitle.com)
+#192.168.74.95  systemhealthsite.invtitle.com               #Redirects to TRN01 System Health Site Website (Example Call: https://systemhealthsite.invtitle.com)
+
+#192.168.74.150 NotificationSvcs		    				#Redirects to TRN01 Services Server load balancer
+#192.168.74.150 SecuritySvcs			    				#Redirects to TRN01 Services Server load balancer
+#192.168.74.150 AuthenticationSvcs		    				#Redirects to TRN01 Services Server load balancer
+#192.168.74.150 WorkflowSvcs			    				#Redirects to TRN01 Services Server load balancer
+#192.168.74.150 FolioSvcs									#Redirects to TRN01 Services Server load balancer
+#192.168.74.140 FolioChangeProcessorSvcs	    			#Redirects to TRN01 Services Server load balancer (Single Service Only, aka 151 server only)
+#192.168.74.150 SearchSvcs									#Redirects to TRN01 Services Server load balancer
+#192.168.74.181 ElasticSearch01								#Redirects to TRN01 ElasticSearch 01 server
+#192.168.74.182 ElasticSearch02								#Redirects to TRN01 ElasticSearch 02 server
+#192.168.74.150 TitleSvcs									#Redirects to TRN01 Services Server load balancer
+#192.168.74.150 DocumentMgmtSvcs							#Redirects to TRN01 Services Server load balancer
+#192.168.74.150 ExceptionHistorySvcs						#Redirects to TRN01 Services Server load balancer
+#192.168.74.150 ExcludedPartiesSvcs							#Redirects to TRN01 Services Server load balancer
+#192.168.74.150	IssuingOfficeSvcs							#Redirects to TRN01 Services Server load balancer
+#192.168.74.150 AccountSvcs									#Redirects to TRN01 Services Server load balancer
+#192.168.74.150 ContactSvcs									#Redirects to TRN01 Services Server load balancer
+#192.168.74.150 ProviderSvcs								#Redirects to TRN01 Services Server load balancer
+#192.168.74.120 SPSSVCS										#Redirects to TRN01 SPS Services Server load balancer
+#192.168.74.160 EfliteSvcs									#Redirects to TRN01 EFLITE Interface Server load balancer
+#192.168.74.151 LawsonProcessor1							#Redirects to TRN01 Services Server load balancer (Single Service Only, aka 151 server only)
+#192.168.74.150 ProductItemSvcs								#Redirects to TRN01 Services Server load balancer
+#192.168.74.151 SpsProviderSyncServer 						#Redirects to TRN01 B0101 Server
+#192.168.74.160 EfliteInterfaceSvcs							#Redirects to TRN01 EFLITE Interface Server load balancer
+#192.168.74.150 EfliteSvcs									#Redirects to TRN01 EFLITE Server load balancer
+#192.168.74.90  SystemHealthSvcs            				#Redirects to TRN01 P0101 load blancer for SystemHealthService
+
+#192.168.74.201 SystemInstrumentationDB	    				#Redirects to TRN01 SQL Server
+#192.168.74.201 NotificationDB			    				#Redirects to TRN01 SQL Server
+#192.168.74.201 UserSecurityDB			    				#Redirects to TRN01 SQL Server
+#192.168.74.201 ClientPortalDB								#Redirects to TRN01 SQL Server
+#192.168.74.201 ExternalDB									#Redirects to TRN01 SQL Server
+#192.168.74.201 FolioDB										#Redirects to TRN01 SQL Server
+#192.168.74.201 ProductItemDb								#Redirects to TRN01 SQL Server
+#192.168.74.201 ArtifactDB									#Redirects to TRN01 SQL Server
+#192.168.74.201 TitleDB										#Redirects to TRN01 SQL Server
+#192.168.74.201 DocumentManagementDB						#Redirects to TRN01 SQL Server
+#192.168.74.201 ProviderDB									#Redirects to TRN01 SQL Server
+#192.168.74.201 AppSQLServer								#Redirects to TRN01 SQL Server
+#192.168.74.211 SalesForceDb								#Redirects to TRN01 Datawarehouse SQL Server
+#192.168.74.216 ReportsDB                    				#Redirects to TRN01 Report SQL Server
+#192.168.74.91 SystemHealthDB                               #Redirects to TRN01 PE SQL Server
+#192.168.74.201 EfliteDb									#Redirects to TRN01 SQL Server
+
+192.168.74.111	TRN01A0103  								#Redirects TRN01 2K19 Client Portal Server (External Facing)
+192.168.74.112	TRN01A0104 									#Redirects TRN01 2K19 Client Portal Server (External Facing)
+192.168.74.121	TRN01A0201									#Redirects TRN01 SoftPro Select Server
+192.168.74.122	TRN01A0202									#Redirects TRN01 SoftPro Select Server
+192.168.74.161  TRN01A0401									#Riderects TRN01 EFLITE Interface Server
+192.168.74.162  TRN01A0402									#Riderects TRN01 EFLITE Interface Server
+192.168.74.153	TRN01B0103 									#Redirects TRN01 2K19 Services Server
+192.168.74.154	TRN01B0104 									#Redirects TRN01 2K19 Services Server
+192.168.74.171	TRN01B0301									#Redirects TRN01 SharePoint Server
+192.168.74.172	TRN01B0302									#Redirects TRN01 SharePoint Server
+192.168.74.181	TRN01B0401									#Redirects TRN01 Elastic Search Server
+192.168.74.182	TRN01B0402									#Redirects TRN01 Elastic Search Server
+192.168.74.191  TRN01B0501									#Redirects TRN01 Title Policy Processing Server
+192.168.74.201	TRN01C0102									#Redirects TRN01 2K16 SQL Server
+192.168.74.211  TRN01C0202									#Redirects TRN01 2K16 SalesForce SQL Server
+192.168.74.216	TRN01C0302									#Redirects TRN01 2K16 Report SQL Server
+192.168.74.240	TRN01C0501									#Redirects TRN01 SPS SQL Server
+192.168.74.250	TRN01F0101       							#Redirects TRN01 Artifact File Server
+192.168.74.252  TRN01F0501                                  #Redirects TRN01 SPS Artifact File Server
+192.168.74.91   TRN01P0101									#Redirects TRN01 PE Server (Includes SQL Server and App server)
+
+#**************************************************************************************************************************************************
+#*** UAT01 Environment
+#**************************************************************************************************************************************************
+
+#192.168.68.100	portal.invtitle.com 	    				#Redirects to UAT01 Client Portal Server load balancer (Example: https://portal.invtitle.com)
+#192.168.68.104 crmexternalservice.invtitle.com			    #Redirects to UAT01 external service server load balancer (Example Call: GET https://crmexternalservice.invtitle.com/v1/pings/shallow)
+#192.168.68.106 externalsvcsforramquest.invtitle.com		#Redirects to UAT01 external service server load balancer (Example Call: POST https://externalsvcsforramquest.invtitle.com/v1/pings/shallow)
+#192.168.68.105	externalsvcsforsoftpro.invtitle.com			#Redirects to UAT01 external service server load balancer (Example Call: POST https://externalsvcsforsoftpro.invtitle.com/v1/pings/shallow)
+#192.168.68.115 externalsvcsforsoftproselect.invtitle.com	#Redirects to UAT01 external service server load balancer (Example Call: POST https://externalsvcsforsoftproselect.invtitle.com/v1/pings/shallow)
+#192.168.68.110 externalsvcsforlandtech.invtitle.com	    #Redirects to UAT01 external service server load balancer (Example Call: POST https://externalsvcsforlandtech.invtitle.com/v1/pings/shallow)
+#192.168.68.109 envstateservice.invtitle.com			    #Redirects to UAT01 envstateservice load balancer (Example Call: https://envstateservice.invtitle.com/v1/version)
+#192.168.68.91  systemhealth.invtitle.com                   #Redirects to UAT01 System Health Website (Example Call: http://systemhealth.invtitle.com)
+#192.168.68.95  systemhealthsite.invtitle.com               #Redirects to UAT01 System Health Site Website (Example Call: https://systemhealthsite.invtitle.com)
+
+#192.168.68.150 NotificationSvcs		    				#Redirects to UAT01 Services Server load balancer
+#192.168.68.150 SecuritySvcs			    				#Redirects to UAT01 Services Server load balancer
+#192.168.68.150 AuthenticationSvcs		    				#Redirects to UAT01 Services Server load balancer
+#192.168.68.150 WorkflowSvcs			    				#Redirects to UAT01 Services Server load balancer
+#192.168.68.150 FolioSvcs									#Redirects to UAT01 Services Server load balancer
+#192.168.68.150 TitleSvcs									#Redirects to UAT01 Services Server load balancer
+#192.168.68.150 DocumentMgmtSvcs							#Redirects to UAT01 Services Server load balancer
+#192.168.68.150 ExceptionHistorySvcs						#Redirects to UAT01 Services Server load balancer
+#192.168.68.150 ExcludedPartiesSvcs							#Redirects to UAT01 Services Server load balancer
+#192.168.68.150	IssuingOfficeSvcs							#Redirects to UAT01 Services Server load balancer
+#192.168.68.150 AccountSvcs									#Redirects to UAT01 Services Server load balancer
+#192.168.68.150 ContactSvcs									#Redirects to UAT01 Services Server load balancer
+#192.168.68.150 ProviderSvcs								#Redirects to UAT01 Services Server load balancer
+#192.168.68.150 ProductItemSvcs								#Redirects to UAT01 Services Server load balancer
+#192.168.68.151 SpsProviderSyncServer 						#Redirects to UAT01 B0101 Server
+#192.168.68.160 EfliteInterfaceSvcs							#Redirects to UAT01 EFLITE Interface Server load balancer
+#192.168.68.150 EfliteSvcs									#Redirects to UAT01 EFLITE Server load balancer
+#192.168.68.201 EfliteDb									#Redirects to UAT01 SQL Server
+#192.168.68.90  SystemHealthSvcs            				#Redirects to PEQA01 P0101 load blancer for SystemHealthService
+
+
+192.168.68.111	UAT01A0103									#Redirects UAT01 2K19 Client Portal Server (External Facing)
+192.168.68.112	UAT01A0104									#Redirects UAT01 2K19 Client Portal Server (External Facing)
+192.168.68.153	UAT01B0103									#Redirects UAT01 2K19 Services Server
+192.168.68.154	UAT01B0104									#Redirects UAT01 2K19 Services Server
+192.168.68.191  UAT01B0501									#Redirects UAT01 Title Policy Processing Server
+192.168.68.201	UAT01C0102				    				#Redirects UAT01 2K16 SQL Server
+192.168.68.211  UAT01C0202									#Redirects UAT01 2K16 Data Warehouse SQL Server
+192.168.68.216	UAT01C0302									#Redirects UAT01 2K16 Report SQL Server
+192.168.68.240	UAT01C0501									#Redirects UAT01 SPS SQL Server
+192.168.68.250	UAT01F0101       							#Redirects UAT01 Artifact File Server
+192.168.68.252  UAT01F0501                                  #Redirects UAT01 SPS Artifact File Server
+192.168.68.91   UAT01P0101									#Redirects UAT01 PE Server (Includes SQL Server and App server)
+
+
+
+127.0.0.1    vmware-localhost
+::1          vmware-localhost

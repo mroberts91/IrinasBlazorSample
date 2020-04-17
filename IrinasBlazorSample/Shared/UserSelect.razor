@@ -1,4 +1,5 @@
-﻿@using IrinasBlazorSample.Data.Models;
+﻿@using IrinasBlazorSample.Data.Models
+@using Microsoft.EntityFrameworkCore
 
 <select @onchange="SelectedUserChanged">
     <option value="">Select a User...</option>
@@ -15,11 +16,8 @@
     async Task SelectedUserChanged(ChangeEventArgs args)
     {
         var userId = args.Value.ToString();
-        var selectedUser = AvailableUsers?.Where(u => u.Id == userId)?.FirstOrDefault();
-        if (selectedUser != null)
-        {
-            UserChangedEvent.InvokeAsync(selectedUser);
-        }
+        var selectedUser = AvailableUsers.Where(u => u.Id == userId).FirstOrDefault();
+        await UserChangedEvent.InvokeAsync(selectedUser);
     }
 
 }

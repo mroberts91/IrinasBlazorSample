@@ -39,6 +39,8 @@ namespace IrinasBlazorSample
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddTransient<IFileUploadService, FileUploadService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

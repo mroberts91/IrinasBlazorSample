@@ -1,7 +1,46 @@
 ﻿@page "/"
+@using IrinasBlazorSample.Services
+@inject IFileUploadService _fileUploadService
+@using IrinasBlazorSample.Models;
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+<br />
+<EditForm Model="@Model2" OnValidSubmit="Submit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <label for="firstname">Firstname</label>
+    <InputText id="firstname" @bind-Value="@Model2.FirstName" class="form-control"></InputText>
+    <label for="lastname">Lastname</label>
+    <InputText id="lastname" @bind-Value="@Model2.LastName" class="form-control"></InputText>
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+
+    public CustomerMetaData Model2 { get; set; } = new CustomerMetaData();
+    public EditContext Context { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Context = new EditContext(Model2)
+        {
+
+        };
+        Context.OnValidationRequested += Foo;
+    }
+
+    private void Foo(object sender, ValidationRequestedEventArgs args)
+    {
+
+    }
+
+    private void Submit(EditContext ctx)
+    {
+        Console.WriteLine();
+    }
+}

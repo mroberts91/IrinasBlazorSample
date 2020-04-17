@@ -13,6 +13,7 @@ namespace IrinasBlazorSample.Data.Models
 
         public string LastName { get; set; }
 
-        public List<Post> Posts { get; set; }
+        public ICollection<Post> Posts { get; set; }
+        public ICollection<Document> Documents { get; set; }
     }
 }

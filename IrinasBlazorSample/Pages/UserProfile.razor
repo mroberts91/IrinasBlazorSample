@@ -1,0 +1,239 @@
+﻿@page "/profile"
+@using IrinasBlazorSample.Data
+@using IrinasBlazorSample.Data.Models
+@using IrinasBlazorSample.Services;
+@using IrinasBlazorSample.Shared;
+@using Microsoft.EntityFrameworkCore; 
+@inject DataContext _context
+@inject IFileUploadService _fileService  
+
+<div class="container">
+    <h1>@(SelectedUser is null ? "Please Select a user" : "")</h1>
+    <div class="row">
+        <div class="col sec">
+            <div class="user-select sec p-4">
+                <UserSelect AvailableUsers="@AvailableUsers" UserChangedEvent="OnSelectedUserChange" />
+            </div>
+        </div>
+        <div class="col">
+            @if (showUserDetail)
+            {
+                <div class="sec p-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>@SelectedUser.FirstName @SelectedUser.LastName</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="user-details">
+                                <div class="content-center">
+                                    <h5><strong>Posts</strong></h5>
+                                </div>
+                                <div class="content-center">
+                                    <p class="detail-link" href="#" @onclick="ShowPostsClick">@SelectedUser.Posts.Count</p>
+                                </div>
+                                <div class="content-center">
+                                    <h5><strong>Documents</strong></h5>
+                                </div>
+                                <div class="content-center">
+                                    <p class="detail-link" @onclick="ShowDocumentClick">@SelectedUser.Documents.Count</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    @if (showUserDetail)
+    {
+        <div class="row">
+            <div class="col">
+                @if (showPosts)
+                {
+                    <PostViewer User="SelectedUser" />
+                }
+                else
+                {
+                    @if (SelectedUser.Documents.Count < 1) 
+                    {
+                        <p><strong><em>This user does not have any documents.</em></strong></p>
+                    }
+                    @foreach (var doc in SelectedUser.Documents)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <h6><strong>@doc.Filename</strong></h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>@doc.Type</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Last Modified: @doc.LastModified</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>File Size: @doc.Size</p>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            @if (showDocuments)
+            {
+                <div class="col">
+                    <h6>File Upload Queue</h6>
+                    <InputFile @ref="InputFile" multiple OnChange="@HandleFileUpload" />
+                    @if (selectedFiles != null)
+                    {
+                        foreach (var file in selectedFiles)
+                        {
+                            var isLoading = file.Data.Position > 0;
+
+                            <div class="file-row">
+                                <!-- File info -->
+                                <div>
+                                    <h2>@file.Name</h2>
+                                    Size: <strong>@file.Size bytes</strong>;
+                                    Last modified: <strong>@file.LastModified.ToShortDateString()</strong>;
+                                    Type: <strong>@file.Type</strong>
+                                </div>
+
+                                <!-- Upload button -->
+                                <button @onclick="() => LoadFile(file)" disabled="@isLoading">
+                                    @if (!isLoading)
+                                    {
+                                        <span>Load</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Loaded @((100.0 * file.Data.Position / file.Size).ToString("0"))%</span>
+                                    }
+                                </button>
+                            </div>
+                        }
+
+                        <button class="btn btn-danger" @onclick="OnClearDocumentQueueClick">Clear Queue</button>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private bool showUserDetail => SelectedUser != null;
+    private bool showDocuments = false;
+    private bool showPosts = false;
+    IFileListEntry[] selectedFiles;
+
+
+    public List<User> AvailableUsers { get; set; } = new List<User>();
+    public User SelectedUser { get; set; }
+    public InputFile InputFile { get; set; } = new InputFile();
+
+
+
+    protected override void OnInitialized()
+    {
+        LoadAvailableUsers();
+    }
+
+    private void LoadAvailableUsers()
+    {
+        AvailableUsers = _context.Users
+                                 .Include(u => u.Posts)
+                                 .Include(u => u.Documents)
+                                 .ToList();
+    }
+
+    private void OnSelectedUserChange(User user)
+    {
+        SelectedUser = user;
+        selectedFiles = null;
+    }
+
+    private void ReloadSelectedUser()
+    {
+        SelectedUser = _context.Users.Where(u => u.Id == SelectedUser.Id)
+                                    .Include(u => u.Documents)
+                                    .Include(u => u.Posts)
+                                    .FirstOrDefault();
+    }
+
+    private async Task ReInitializeFileInput()
+    {
+        InputFile = new InputFile();
+        await InvokeAsync(() => StateHasChanged());
+    }
+
+    private void ShowDocumentClick()
+    {
+        showDocuments = true;
+        showPosts = false;
+    }
+
+    private async Task OnClearDocumentQueueClick()
+    {
+        selectedFiles = null;
+        await ReInitializeFileInput();
+
+    }
+
+    private void ShowPostsClick()
+    {
+        showDocuments = false;
+        showPosts = true;
+    }
+
+    private void HandleFileUpload(IFileListEntry[] files)
+    {
+        if (SelectedUser is null) return;
+
+        selectedFiles = files;
+    }
+
+    async Task LoadFile(IFileListEntry file)
+    {
+        // So the UI updates to show progress
+        file.OnDataRead += (sender, eventArgs) => InvokeAsync(StateHasChanged);
+
+        await _fileService.UploadUserDocumentAsync(SelectedUser.Id, file.Data, file.Name, file.LastModified, file.Size, file.Type);
+        ReloadSelectedUser();
+    }
+}
+
+<style>
+    .content-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .user-select {
+        padding: 5px;
+        width: 60%;
+        font-size: 115%;
+    }
+    .user-details {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 10em 1fr;
+        grid-template-rows: 7em 7em;
+        grid-row-gap: .8em;
+        grid-column-gap: 0;
+    }
+
+    .detail-link {
+        font-size: 230%;
+        color: #215aa0;
+    }
+
+        .detail-link:hover {
+            color: #81a9da;
+            cursor: pointer;
+        }
+</style>
