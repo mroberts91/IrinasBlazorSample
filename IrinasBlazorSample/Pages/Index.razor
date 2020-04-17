@@ -9,16 +9,6 @@ Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
 
-<br />
-<EditForm Model="@Model2" OnValidSubmit="Submit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <label for="firstname">Firstname</label>
-    <InputText id="firstname" @bind-Value="@Model2.FirstName" class="form-control"></InputText>
-    <label for="lastname">Lastname</label>
-    <InputText id="lastname" @bind-Value="@Model2.LastName" class="form-control"></InputText>
-    <button type="submit">Submit</button>
-</EditForm>
 
 @code {
 
