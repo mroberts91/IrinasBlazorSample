@@ -1,11 +1,5 @@
 ﻿@page "/profile"
-@using IrinasBlazorSample.Data
-@using IrinasBlazorSample.Data.Models
-@using IrinasBlazorSample.Services;
-@using IrinasBlazorSample.Shared;
-@using Microsoft.EntityFrameworkCore; 
-@inject DataContext _context
-@inject IFileUploadService _fileService  
+
 
 <div class="container">
     <h1>@(SelectedUser is null ? "Please Select a user" : "")</h1>
@@ -16,7 +10,7 @@
             </div>
         </div>
         <div class="col">
-            @if (showUserDetail)
+            @if (ShowUserDetail)
             {
                 <div class="sec p-3">
                     <div class="card">
@@ -45,7 +39,7 @@
             }
         </div>
     </div>
-    @if (showUserDetail)
+    @if (ShowUserDetail)
     {
         <div class="row">
             <div class="col">
@@ -126,87 +120,6 @@
     }
 </div>
 
-@code {
-    private bool showUserDetail => SelectedUser != null;
-    private bool showDocuments = false;
-    private bool showPosts = false;
-    IFileListEntry[] selectedFiles;
-
-
-    public List<User> AvailableUsers { get; set; } = new List<User>();
-    public User SelectedUser { get; set; }
-    public InputFile InputFile { get; set; } = new InputFile();
-
-
-
-    protected override void OnInitialized()
-    {
-        LoadAvailableUsers();
-    }
-
-    private void LoadAvailableUsers()
-    {
-        AvailableUsers = _context.Users
-                                 .Include(u => u.Posts)
-                                 .Include(u => u.Documents)
-                                 .ToList();
-    }
-
-    private void OnSelectedUserChange(User user)
-    {
-        SelectedUser = user;
-        selectedFiles = null;
-    }
-
-    private void ReloadSelectedUser()
-    {
-        SelectedUser = _context.Users.Where(u => u.Id == SelectedUser.Id)
-                                    .Include(u => u.Documents)
-                                    .Include(u => u.Posts)
-                                    .FirstOrDefault();
-    }
-
-    private async Task ReInitializeFileInput()
-    {
-        InputFile = new InputFile();
-        await InvokeAsync(() => StateHasChanged());
-    }
-
-    private void ShowDocumentClick()
-    {
-        showDocuments = true;
-        showPosts = false;
-    }
-
-    private async Task OnClearDocumentQueueClick()
-    {
-        selectedFiles = null;
-        await ReInitializeFileInput();
-
-    }
-
-    private void ShowPostsClick()
-    {
-        showDocuments = false;
-        showPosts = true;
-    }
-
-    private void HandleFileUpload(IFileListEntry[] files)
-    {
-        if (SelectedUser is null) return;
-
-        selectedFiles = files;
-    }
-
-    async Task LoadFile(IFileListEntry file)
-    {
-        // So the UI updates to show progress
-        file.OnDataRead += (sender, eventArgs) => InvokeAsync(StateHasChanged);
-
-        await _fileService.UploadUserDocumentAsync(SelectedUser.Id, file.Data, file.Name, file.LastModified, file.Size, file.Type);
-        ReloadSelectedUser();
-    }
-}
 
 <style>
     .content-center {
